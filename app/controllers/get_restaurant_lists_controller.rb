@@ -4,7 +4,7 @@ class GetRestaurantListsController < ApplicationController
 
 #helper GetRestaurantListHelper
 #need the filter
-#before_filter :ensure_params_exist
+before_filter :ensure_params_exist
   # GET /get_restaurant_lists
   # GET /get_restaurant_lists.json
 
