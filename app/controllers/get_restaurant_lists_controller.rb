@@ -15,7 +15,7 @@ class GetRestaurantListsController < ApplicationController
 
   # GET /get_restaurant_lists
   # GET /get_restaurant_lists.json
-
+=begin
   def index
     #1. Get the JSON from Maps
     mapsJSON = GetRestaurantList.get_route_directions_json(params)
@@ -43,6 +43,23 @@ class GetRestaurantListsController < ApplicationController
     #render the json and return
     jsonStr = jsonStr.merge(places)
     render json: jsonStr
+  end
+=end
+  def index
+    #1. Get the JSON from Maps
+    mapsJSON = GetRestaurantList.get_google_maps(params)
+    #check if it is valid
+    jsonStr = {:routes => mapsJSON}
+    #if(GoogleMapsHelper.isValid(mapsJSON))
+      #render json: jsonStr
+     # return
+    #end
+
+    #2. Push the stuff to routeBoxer. Ask Dheraj if he wants just the two points
+    # or if he just wants the google json (We have no idea)
+    routeBoxes = GetRestaurantList.get_route_boxes(routeOfTrip)
+
+   render json: jsonStr
   end
 
   def testMethod
@@ -89,11 +106,5 @@ class GetRestaurantListsController < ApplicationController
 
     head :no_content
   end
-protected
-   
-private
-  def ensure_params_exist
-return unless params[:origin].blank?
-render :json=>{:success=>false, :message=>"missing user_login parameter"}, :status=>0
-end
+
  end

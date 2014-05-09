@@ -1,20 +1,21 @@
 class GetRestaurantList < ActiveRecord::Base
-  @requiredParam = ["origin"]
-  #we hardcode the default parameters (I cant figure out how the hell we do this outside of the class)
-  # However, this is for James. I just have this in here for you.
-  @optionalParamMaps = { "destination" => nil,
-                                  "sensor" => false,
-                                  "mode" => "driving"
-  }
 
-  ["destination", "sensor", "mode"]
-  def self.get_google_maps_direction(params)
-    return get_restaurant_list_helper.
-  end
+#this class is composed of all the primary methods of the other methods. We will access these other methods
+  #with the use of a helper
 
-  def sample_maps_template(origin, *others)
-    puts ("origin is: " + origin)
-    others.inspect
-  end
-  end
-  end
+    def self.get_google_maps(params)
+      return GetRestaurantListHelper.get_google_maps(params)
+    end
+
+# Returns the route boxes response
+    def self.get_route_boxes(routeBoxes)
+      return GetRestaurantListHelper.get_route_boxes(routeBoxes)
+    end
+
+    #Returns the restaurants response
+    def self.get_restaurant_along_route(setOfPoints)
+      return GetRestaurantListHelper.get_restaurant_along_route(setOfPoints)
+    end
+
+
+end

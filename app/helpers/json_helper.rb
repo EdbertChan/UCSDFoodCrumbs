@@ -50,4 +50,20 @@ module JsonHelper
     end
     return mrg
   end
+
+  #this is to get rid of all the garbage /u characters in our response
+  def self.unicode_to_utf8(unicode_string)
+    unicode_string.gsub(/\\u\w{4}/) do |s|
+      str = s.sub(/\\u/, "").hex.to_s(2)
+      if str.length < 8
+        CGI.unescape(str.to_i(2).to_s(16).insert(0, "%"))
+      else
+        arr = str.reverse.scan(/\w{0,6}/).reverse.select{|a| a != ""}.map{|b| b.reverse}
+        hex = lambda do |s|
+          (arr.first == s ? "1" * arr.length + "0" * (8 - arr.length - s.length) + s : "10" + s).to_i(2).to_s(16).insert(0, "%")
+        end
+        CGI.unescape(arr.map(&hex).join)
+      end
+    end
+  end
   end
