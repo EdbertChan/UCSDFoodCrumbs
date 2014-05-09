@@ -4,11 +4,12 @@ require 'rubygems'
 require 'json'
 require 'active_support'
 class GetRestaurantListsController < ApplicationController
+  include GetRestaurantListHelper
+  include JsonHelper
 
-
-#helper GetRestaurantListHelper
+#helper:all
 #need the filter
-
+  helper_method :all
 #Check if the parameters exist before we do ANYTHING
 #before_filter :ensure_params_exist
 
@@ -16,95 +17,38 @@ class GetRestaurantListsController < ApplicationController
   # GET /get_restaurant_lists.json
 
   def index
+    #1. Get the JSON from Maps
+    mapsJSON = GetRestaurantList.get_route_directions_json(params)
+    #check if it is valid
+    jsonStr = {:routes => ActiveSupport::JSON.decode(mapsJSON)}
+    if(GoogleMapsHelper.isValid(mapsJSON))
+      render json: jsonStr
+      return
+    end
+   #2. Push the stuff to routeBoxer
+    routeBoxes = GetRestaurantList.get_route_boxes(routeOfTrip)
 
-     #1. Check to see if we can process this anyway?
+    #check to see if the return is valid?
 
-    #this is code to process the list by using the parameters
-    #given by the URL
-    #@get_restaurant_lists = GetRestaurantList.find(user_params)
-      @get_restaurant_lists = GetRestaurantList.all
-   #puts get_route_directions_json(params)
+    #3. Push each and every box to GooglePlaces
+    hashOfPlacesJsonResponse = {}
+    for i in 0...routeBoxes.size
+      placeResponse = GetRestaurantList.get_restaurant_along_route()
+      #listOfPlaces.push(placeResponse)
+      hashOfPlacesJsonResponse = GetRestaurantHelper.get_restaurant_json_hasher(hashOfPlacesJsonResponse, placeResponse)
+    end
+    #Hash together the responses
+    places = {:places => ActiveSupport::JSON.decode(hashOfPlacesJsonResponse)}
 
-    #2. Check to see if Google request is ok
-
-
-    #3. Check to see if Yelp request is ok
-
-    #4. Get the list and return it
-    
-    #nonproduction code. Just used for demoing
-
-#sample SSH call to google maps api
-
-uri = URI('https://maps.googleapis.com/maps/api/directions/json?origin=LaJolla&destination=SanDiego&sensor=false&key=AIzaSyAAe8uFG4L8f_LYe-7etsNwdXraAUxIcPs')
-http = Net::HTTP.new(uri.host, uri.port)
-
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-request = Net::HTTP::Get.new(uri.request_uri)
-
-responseRoute = http.request(request)
-
-
-    
-    
-=begin   
-    latPoints = [ "32.84020539999999",
-         "32.8404957",
-         "32.841919",
-         "32.8500026",
-         "32.841919",
-         "32.840688",
-         "32.8387322",
-         "32.840688",
-         "32.7268972",
-         "32.7245536"
-      ]
-    longPoints = [ "-117.2737146",
-         "-117.2724922",
-         "-117.272949",
-         "-117.2515528",
-         "-117.272949",
-         "-117.2378148",
-         "-117.2365587",
-        "-117.2378148",
-        "-117.1675917",
-        "-117.1657617"
-      ]
-=end
-    latPoints = [ "32.84020539999999",
-         "32.841919",
-      ]
-    longPoints = [ "-117.2737146",
-         "-117.272949",
-      ]
-
-array = Array.new
-for i in 0...latPoints.size
- url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latPoints[i] +
-  ","+longPoints[i] + "&radius=500&types=food&sensor=false&key=AIzaSyAAe8uFG4L8f_LYe-7etsNwdXraAUxIcPs"
-  
-  uri = URI(url)
-  http = Net::HTTP.new(uri.host, uri.port)
-
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-request = Net::HTTP::Get.new(uri.request_uri)
-
-responsePlace = http.request(request)
-    array.push(responsePlace.body)
-end
-
-
-
-    jsonStr = {:routes =>  ActiveSupport::JSON.decode(responseRoute.body), :place1 =>  ActiveSupport::JSON.decode(array[0]), :place2 =>  ActiveSupport::JSON.decode(array[1])}
- #return stuff
-
- render json: jsonStr
-        #render json: @get_restaurant_lists, status: 422
-    
+    #render the json and return
+    jsonStr = jsonStr.merge(places)
+    render json: jsonStr
   end
 
+  def testMethod
+    #this method is called by our helper to show a proof of concept
+    puts("GetRestaurantListsController.testMethod called!")
+  end
   # GET /get_restaurant_lists/1
   # GET /get_restaurant_lists/1.json
   def show
