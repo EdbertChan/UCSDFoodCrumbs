@@ -6,6 +6,7 @@ require 'active_support'
 class GetRestaurantListsController < ApplicationController
   include GetRestaurantListHelper
   include JsonHelper
+  include GoogleMapsHelper
 
 #helper:all
 #need the filter
@@ -47,19 +48,30 @@ class GetRestaurantListsController < ApplicationController
 =end
   def index
     #1. Get the JSON from Maps
-    mapsJSON = GetRestaurantList.get_google_maps(params)
+   mapsJSON = GetRestaurantList.get_google_maps(params)
     #check if it is valid
     jsonStr = {:routes => mapsJSON}
+
     #if(GoogleMapsHelper.isValid(mapsJSON))
       #render json: jsonStr
      # return
     #end
 
+    routeOfTrip = GoogleMapsHelper.get_routes(mapsJSON)
     #2. Push the stuff to routeBoxer. Ask Dheraj if he wants just the two points
     # or if he just wants the google json (We have no idea)
-    routeBoxes = GetRestaurantList.get_route_boxes(routeOfTrip)
+    #routeBoxes = GetRestaurantList.get_route_boxes(routeOfTrip)
 
-   render json: jsonStr
+
+#this is now a jsonarry. how do we itterate though a json Array?
+    #3. Push each and every box to GooglePlaces
+   # hashOfPlacesJsonResponse = {}
+    #for i in 0...boxesArray.size
+     #  placeResponse = GetRestaurantList.get_restaurant_along_route(i)
+     # hashOfPlacesJsonResponse = GetRestaurantHelper.get_restaurant_json_hasher(hashOfPlacesJsonResponse, placeResponse)
+  #  end
+
+   render json: routeOfTrip
   end
 
   def testMethod

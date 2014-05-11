@@ -2,7 +2,7 @@
 module JsonHelper
 
   # Returns the full title on a per-page basis.
-  def @self.JSONGetField(jsonString, stringField)
+  def self.JSONGetField(jsonString, stringField)
 
     #check if JSON is valid
     valid = JSONValidHelper.is_json?(jsonString)

@@ -6,7 +6,7 @@ module GetRestaurantHelper
     mrg = JSON.parse(json1)['results']
     results2 = JSON.parse(json2)['results']
     #currently nonoptimal code because I have no idea how to implement a hash table in Ruby
-    mrg.reverse_merge!(results2)
+    mrg.reverse_merge!(defaults)
     return mrg
   end
 
