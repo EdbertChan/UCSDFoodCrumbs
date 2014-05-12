@@ -1,7 +1,7 @@
 <?php
 
 namespace GeoTools;
-
+require("LatLng.php");
 /**
  * Description of LatLngCollection
  *

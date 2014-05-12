@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52731b5c-19bb-425c-b171-82973f8fbc55" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/php/LatLng.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/php/LatLngBounds.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/php/LatLngCollection.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/RouteBoxer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/php/RouteBoxer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/box_route.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/php/getBoxes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/UCSDFoodCrumbs.iml" afterPath="$PROJECT_DIR$/.idea/UCSDFoodCrumbs.iml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/RouteBoxer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/box_route.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/php/LatLng.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/php/LatLngBounds.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/php/LatLngCollection.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/php/RouteBoxer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/php/getBoxes.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/google_maps_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/google_maps_helper.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="UCSDFoodCrumbs.iws" />
@@ -37,28 +33,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SampleHTTPGetControllerBackup" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/SampleHTTPGetControllerBackup">
+      <file leaf-file-name="getBoxes.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/php/src/getBoxes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="0" selection-start="2609" selection-end="2630" vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="2415">
+            <state line="17" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.3951613" vertical-offset="108" max-vertical-offset="480">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="json_helper.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/helpers/json_helper.rb">
+      <file leaf-file-name="RouteBoxer.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/php/src/GeoTools/RouteBoxer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="23" selection-start="79" selection-end="91" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
+            <state line="514" column="5" selection-start="17828" selection-end="17828" vertical-scroll-proportion="0.0" vertical-offset="7546" max-vertical-offset="7950">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="get_restaurant_helper.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/helpers/get_restaurant_helper.rb">
+      <file leaf-file-name="LatLngCollection.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/php/src/GeoTools/LatLngCollection.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="21" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+            <state line="11" column="0" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/php/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="31" selection-start="569" selection-end="569" vertical-scroll-proportion="-5.72" vertical-offset="367" max-vertical-offset="705">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LatLngBounds.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/php/src/GeoTools/LatLngBounds.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="17" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3675">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LatLng.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/php/src/GeoTools/LatLng.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="16" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960">
               <folding />
             </state>
           </provider>
@@ -67,37 +90,17 @@
       <file leaf-file-name="get_restaurant_lists_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="51" selection-start="1489" selection-end="1489" vertical-scroll-proportion="0.0" vertical-offset="583" max-vertical-offset="1620">
+            <state line="65" column="38" selection-start="2030" selection-end="2030" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="1980">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getBoxes.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/php/getBoxes.php">
+      <file leaf-file-name="LatLng.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/php/src/GeoTools/Geokit/LatLng.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="594" selection-end="742" vertical-scroll-proportion="0.22857143" vertical-offset="265" max-vertical-offset="630">
+            <state line="8" column="51" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1950">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="box_route.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/box_route.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RouteBoxer.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/RouteBoxer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="576" column="2" selection-start="22387" selection-end="22387" vertical-scroll-proportion="0.0" vertical-offset="1445" max-vertical-offset="8730">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -106,16 +109,9 @@
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
             <state line="13" column="0" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="google_maps_helper.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/helpers/google_maps_helper.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="17" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
-              <folding />
+              <folding>
+                <marker date="1399847042000" expanded="true" signature="134:191" placeholder="#..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,17 +149,24 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/route_boxer.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/RouteBoxer.js" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
         <option value="$PROJECT_DIR$/app/helpers/google_maps_helper.rb" />
+        <option value="$PROJECT_DIR$/app/assets/php/LatLng.php" />
+        <option value="$PROJECT_DIR$/app/assets/php/RouteBoxer.php" />
         <option value="$PROJECT_DIR$/app/assets/php/getBoxes.php" />
+        <option value="$PROJECT_DIR$/app/assets/php/src/GeoTools/getBoxes.php" />
+        <option value="$PROJECT_DIR$/app/assets/php/src/GeoTools/LatLngCollection.php" />
+        <option value="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/php/src/GeoTools/LatLng.php" />
+        <option value="$PROJECT_DIR$/app/assets/php/src/getBoxes.php" />
+        <option value="$PROJECT_DIR$/app/assets/php/src/GeoTools/RouteBoxer.php" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="40" />
-    <option name="y" value="45" />
+    <option name="x" value="23" />
+    <option name="y" value="35" />
     <option name="width" value="1260" />
-    <option name="height" value="682" />
+    <option name="height" value="691" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -369,7 +372,67 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UCSDFoodCrumbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UCSDFoodCrumbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UCSDFoodCrumbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UCSDFoodCrumbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeoTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -403,10 +466,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="SearchEverywhereHistory" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/assets/php/Geokit" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/assets/php" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/assets/php/src" />
+      <recent name="$PROJECT_DIR$/app/assets/php/src/GeoTools" />
+      <recent name="$PROJECT_DIR$/app/assets/php/src/GeoTools/Geokit" />
+      <recent name="$PROJECT_DIR$/app/assets/php" />
+      <recent name="$PROJECT_DIR$/app/assets/php/vendor" />
     </key>
   </component>
   <component name="RunManager" selected="Rails.Development: UCSDFoodCrumbs">
@@ -575,7 +646,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="40" y="45" width="1260" height="682" extended-state="0" />
+    <frame x="23" y="35" width="1260" height="691" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -587,7 +658,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24958949" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32792208" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3232" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -747,37 +818,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="38" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/box_route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/SampleHTTPGetControllerBackup">
       <provider selected="true" editor-type-id="text-editor">
         <state line="102" column="0" selection-start="2609" selection-end="2630" vertical-scroll-proportion="0.0" vertical-offset="1050" max-vertical-offset="2415">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="0" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0" vertical-offset="483" max-vertical-offset="1035">
           <folding />
         </state>
       </provider>
@@ -796,6 +839,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="38" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/google_maps_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="17" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
@@ -803,25 +853,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/RouteBoxer.js">
+    <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="576" column="2" selection-start="22387" selection-end="22387" vertical-scroll-proportion="0.0" vertical-offset="1385" max-vertical-offset="8730">
+        <state line="13" column="0" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <marker date="1399847042000" expanded="true" signature="134:191" placeholder="#..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/php/vendor/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="363">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/php/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="31" selection-start="569" selection-end="569" vertical-scroll-proportion="-5.72" vertical-offset="367" max-vertical-offset="705">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/php/src/GeoTools/LatLngCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/php/src/GeoTools/LatLngBounds.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="17" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3675">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="0" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0" vertical-offset="483" max-vertical-offset="1035">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="51" selection-start="1489" selection-end="1489" vertical-scroll-proportion="0.0" vertical-offset="583" max-vertical-offset="1620">
+        <state line="65" column="38" selection-start="2030" selection-end="2030" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="1980">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/php/getBoxes.php">
+    <entry file="file://$PROJECT_DIR$/app/assets/php/src/GeoTools/Geokit/LatLng.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="594" selection-end="742" vertical-scroll-proportion="0.22857143" vertical-offset="265" max-vertical-offset="630">
+        <state line="8" column="51" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1950">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/php/src/GeoTools/LatLng.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="16" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/php/src/GeoTools/RouteBoxer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="514" column="5" selection-start="17828" selection-end="17828" vertical-scroll-proportion="0.0" vertical-offset="7546" max-vertical-offset="7950">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/php/src/getBoxes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.3951613" vertical-offset="108" max-vertical-offset="480">
           <folding />
         </state>
       </provider>

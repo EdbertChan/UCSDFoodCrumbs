@@ -1,13 +1,13 @@
 <?php
 
 namespace GeoTools;
-
+require("LatLngBounds.php");
 /**
  * Description of RouteBoxer
  *
  * @author Martin
  */
-class RouteBoxer
+class RouteBoxer implement JsonSerializable
 {
 
 	private $R = 6371; // earth's mean radius in km
@@ -31,13 +31,13 @@ class RouteBoxer
 	 * Array of bounds that cover the whole route formed by merging cells that
 	 * the route intersects first horizontally, and then vertically
 	 */
-	private $boxesX = [];
+	public $boxesX = [];
 
 	/*
 	 *  Array of bounds that cover the whole route formed by merging cells that
 	 * the route intersects first vertically, and then horizontally
 	 */
-	private $boxesY = [];
+	public $boxesY = [];
 
 
 
@@ -506,5 +506,19 @@ class RouteBoxer
 		return new LatLngBounds($southWest, $northEast);
 	}
 
+  public function jsonSerialize()
+    {
+    if(count($this->boxesX) <= count($this->boxesY){
+    return array(
+    'boxes' => $this->boxesX,
+    );
+    }
+    else{
+        return array(
+        'boxes' => $this->boxesY,
+        );
+    }
+
+    }
 
 }
