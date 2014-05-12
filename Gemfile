@@ -9,6 +9,10 @@ gem 'rails-api'
 #gem 'pg'
 gem 'sqlite3'
 
+
+  gem 'coffee-rails'
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

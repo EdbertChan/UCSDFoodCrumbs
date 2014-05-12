@@ -8,7 +8,6 @@ module GoogleMapsHelper
     routes = googleMapsJson['routes'][0]['legs'][0]['steps']
     return routes
 
-
   end
 
 

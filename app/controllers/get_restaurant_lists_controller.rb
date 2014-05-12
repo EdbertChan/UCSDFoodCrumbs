@@ -17,37 +17,7 @@ class GetRestaurantListsController < ApplicationController
   # GET /get_restaurant_lists
   # GET /get_restaurant_lists.json
 =begin
-  def index
-    #1. Get the JSON from Maps
-    mapsJSON = GetRestaurantList.get_route_directions_json(params)
-    #check if it is valid
-    jsonStr = {:routes => ActiveSupport::JSON.decode(mapsJSON)}
-    if(GoogleMapsHelper.isValid(mapsJSON))
-      render json: jsonStr
-      return
-    end
-   #2. Push the stuff to routeBoxer
-    routeBoxes = GetRestaurantList.get_route_boxes(routeOfTrip)
-
-    #check to see if the return is valid?
-
-    #3. Push each and every box to GooglePlaces
-    hashOfPlacesJsonResponse = {}
-    for i in 0...routeBoxes.size
-      placeResponse = GetRestaurantList.get_restaurant_along_route()
-      #listOfPlaces.push(placeResponse)
-      hashOfPlacesJsonResponse = GetRestaurantHelper.get_restaurant_json_hasher(hashOfPlacesJsonResponse, placeResponse)
-    end
-    #Hash together the responses
-    places = {:places => ActiveSupport::JSON.decode(hashOfPlacesJsonResponse)}
-
-    #render the json and return
-    jsonStr = jsonStr.merge(places)
-    render json: jsonStr
-  end
-=end
-  def index
-    #1. Get the JSON from Maps
+  #1. Get the JSON from Maps
    mapsJSON = GetRestaurantList.get_google_maps(params)
     #check if it is valid
     jsonStr = {:routes => mapsJSON}
@@ -72,6 +42,16 @@ class GetRestaurantListsController < ApplicationController
   #  end
 
    render json: routeOfTrip
+=end
+  def index
+    parameter = "alwayswannafly"
+
+  source = `php app/assets/php/getBoxes.php "hello"`
+   # avariableparameter = "--o ipso -v lorem"
+    #source = %x[php app/assets/php/getBoxes.php  "#{avariableparameter}"]
+#exec(source)
+  #File.read(Rails.root.join("app/assets/javascripts/box_route.js"))
+   puts(source)
   end
 
   def testMethod
