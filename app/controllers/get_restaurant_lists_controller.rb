@@ -46,36 +46,39 @@ class GetRestaurantListsController < ApplicationController
   def index
 
       #1. Get the JSON from Maps
-    mapsJSON = GetRestaurantList.get_google_maps(params)
+  mapsJSON = GetRestaurantList.get_google_maps(params)
 
       #check if it is valid
-     jsonStr = {:routes => mapsJSON}
+  #  jsonStr = {:routes => mapsJSON}
 
 
-      #if(GoogleMapsHelper.isValid(mapsJSON))
+      #if(GoogleMapsHelper.get_status(mapsJSON) == 107)
       #render json: jsonStr
       # return
       #end
 
       routeOfTrip = GoogleMapsHelper.get_routes(mapsJSON)
+  #render routeOfTrip
       #jsonStr = {:routes => routeOfTrip}
 
     #now we have a json array. we want to extract all the start_locations from them
     #extract the points along the route
-    arrayOfRouteLocations = RouteBoxerHelper.get_route_from_google_maps_json(routeOfTrip)
+    arrayOfRouteLocations = GoogleMapsHelper.get_route_from_google_maps_json(routeOfTrip)
 
       #2. Push the stuff to routeBoxer.
       # arg1 should be an array of coordinate. arg2 should be the radius
     #to run php code, we take the stdout of php and it gets assigned to a variable. This is just the location of
     #the script
     #returns an array of arrays
-    arrayOfBoxCoordinates = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, 5)
+
+    #check the radius. If non numeric is not put in, we will skip the boxer and just return the array
+    #arrayOfBoxCoordinates = RouteBoxerHelper.get_route_boxes("foo", 5)
 
 
      #Yank out all the boxes, if possible.
      #If something goes wrong, just return and do not go to 3
      #arrayOfBoxes
-
+=begin
       #3. Push each and every box to GooglePlaces
        hashOfPlacesJsonResponse = {}
       for i in 0...boxesArray.size
@@ -89,8 +92,9 @@ class GetRestaurantListsController < ApplicationController
      #merge the results with the json string and return
      #render the json and return
      jsonStr = jsonStr.merge(places)
-    render json: jsonStr
-#puts(routeBoxerJSON)
+=end
+    render json: arrayOfRouteLocations
+#puts(arrayOfBoxCoordinates)
   end
 
   def testMethod

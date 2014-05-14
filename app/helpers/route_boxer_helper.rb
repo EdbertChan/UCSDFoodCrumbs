@@ -24,30 +24,10 @@ module RouteBoxerHelper
       true if Float(object) rescue false
     end
 
-  def self.get_route_from_google_maps_json(routeOfTripJson)
-    #check to see if this is a google maps valid json
-    #1) Check if the string is formated ok as a JSON
-    #2) Check if the status is ok
 
-    #extract the boxes, if possible
-    arrayOfCoordinates = Array.new()
 
-    routeOfTripJson.each do |item|
-      #Rails.logger.info item['start_location']
-      starting_coordinate = item['start_location']
-      lat = starting_coordinate['lat']
-      lng = starting_coordinate['lng']
-
-      coordinates = Array.new()
-      coordinates.push(lat)
-       coordinates.push(lng)
-
-      arrayOfCoordinates.push(coordinates)
+private
+    def self.checkValidInputs(arrayOfRouteLocations, radius)
+      render :json => { :errors => @model.errors }
     end
-
-
-    #return an array of coordinate points
-return arrayOfCoordinates
-  end
-
 end

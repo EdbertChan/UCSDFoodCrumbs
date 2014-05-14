@@ -15,7 +15,7 @@ def self.get_google_maps(params)
   response = http.request(request)
 
   return JSON.parse(response.body)
-  #return GoogleMaps.getRoutes(params)
+  #return Google_Maps.get_directions_json(params)
 end
 
 # Returns the route boxes response
