@@ -54,5 +54,15 @@ class LatLng extends \Geokit\LatLng
 		return (rad2deg($number) + 360) % 360;
 	}
 
+public function tojson()
+{
+//we could just make the LatLng public but that's just bad coding
+
+  return array(
+            'latitude' => $this->getLatitude(),
+            'longitude' => $this->getLongitude(),
+        );
+
+}
 
 }

@@ -7,7 +7,10 @@ require("LatLngBounds.php");
  *
  * @author Martin
  */
-class RouteBoxer implement JsonSerializable
+
+ //note: we need to implement jsonserializable but for some reason it thinks it needs to be a
+ //local class
+class RouteBoxer
 {
 
 	private $R = 6371; // earth's mean radius in km
@@ -506,19 +509,43 @@ class RouteBoxer implement JsonSerializable
 		return new LatLngBounds($southWest, $northEast);
 	}
 
-  public function jsonSerialize()
-    {
-    if(count($this->boxesX) <= count($this->boxesY){
-    return array(
-    'boxes' => $this->boxesX,
-    );
-    }
-    else{
-        return array(
-        'boxes' => $this->boxesY,
-        );
-    }
+public function tojson()
+{
+//json representation of our current box
 
-    }
+	if(count($this->boxesX) <= count($this->boxesY))
+	$tempBox = $this->boxesX;
+	else
+	$tempBox = $this->boxesY;
 
+//tempbox is an array of LatLngBounds Object
+
+
+//this holds an arary of box coordinates
+$boxes = array();
+//we will itterate through the values of boxes X and Y and get shit
+for($i=0; $i < count($tempBox); $i++){
+
+//begin creating our box_coordinates. Box coordinates has an upper left and bottom right
+
+$North_East = $tempBox[$i]->getNorthEast();
+$top_right_y = $North_East->getLongitude();
+$top_right_x = $North_East->getLatitude();
+
+$South_West = $tempBox[$i]->getSouthWest();
+$bottom_left_y = $South_West->getLongitude();
+$bottom_left_x = $South_West->getLatitude();
+
+//begin creating our array for box coordinates
+
+$box_coordinates = array( 'upper-right' => $North_East->tojson(), 'bottom-left' => $South_West->tojson());
+
+array_push($boxes, $box_coordinates);
+}
+
+$named_array = array(
+    "boxes" => $boxes,
+);
+return $named_array;
+}
 }

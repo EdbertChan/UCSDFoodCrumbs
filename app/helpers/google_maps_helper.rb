@@ -6,6 +6,8 @@ module GoogleMapsHelper
 
     #extract if it is relevant
     routes = googleMapsJson['routes'][0]['legs'][0]['steps']
+
+    #return. Must note what happens on failure.
     return routes
 
   end
