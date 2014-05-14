@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d51bed2e-bbf9-4924-8457-9cf613f2a7d5" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/php/getBoxes.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/UCSDFoodCrumbs.iml" afterPath="$PROJECT_DIR$/.idea/UCSDFoodCrumbs.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/php/src/getBoxes.php" afterPath="$PROJECT_DIR$/app/assets/php/src/getBoxes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/get_restaurant_list_test.rb" afterPath="$PROJECT_DIR$/test/models/get_restaurant_list_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/google_maps_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/google_maps_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/route_boxer_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/route_boxer_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="UCSDFoodCrumbs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="get_restaurant_lists_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="get_restaurant_lists_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="38" selection-start="3206" selection-end="3227" vertical-scroll-proportion="0.0" vertical-offset="647" max-vertical-offset="2265">
+            <state line="62" column="43" selection-start="1737" selection-end="1737" vertical-scroll-proportion="0.5260223" vertical-offset="647" max-vertical-offset="2250">
               <folding />
             </state>
           </provider>
@@ -69,10 +62,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="google_maps_helper.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="google_maps_helper.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/helpers/google_maps_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="34" selection-start="849" selection-end="849" vertical-scroll-proportion="0.5099819" vertical-offset="169" max-vertical-offset="735">
+            <state line="19" column="42" selection-start="416" selection-end="447" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
               <folding />
             </state>
           </provider>
@@ -141,8 +134,8 @@
         <option value="$PROJECT_DIR$/app/assets/php/src/getBoxes.php" />
         <option value="$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb" />
         <option value="$PROJECT_DIR$/app/helpers/route_boxer_helper.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
         <option value="$PROJECT_DIR$/app/helpers/google_maps_helper.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
       </list>
     </option>
   </component>
@@ -701,16 +694,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/helpers/google_maps_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="38" selection-start="3206" selection-end="3227" vertical-scroll-proportion="0.0" vertical-offset="647" max-vertical-offset="2265">
+        <state line="19" column="42" selection-start="416" selection-end="447" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/google_maps_helper.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="34" selection-start="849" selection-end="849" vertical-scroll-proportion="0.5099819" vertical-offset="169" max-vertical-offset="735">
+        <state line="62" column="43" selection-start="1737" selection-end="1737" vertical-scroll-proportion="0.5260223" vertical-offset="647" max-vertical-offset="2250">
           <folding />
         </state>
       </provider>

@@ -49,7 +49,7 @@ class GetRestaurantListsController < ApplicationController
   mapsJSON = GetRestaurantList.get_google_maps(params)
 
       #check if it is valid
-  #  jsonStr = {:routes => mapsJSON}
+   jsonStr = {:routes => mapsJSON}
 
 
       #if(GoogleMapsHelper.get_status(mapsJSON) == 107)
@@ -57,13 +57,12 @@ class GetRestaurantListsController < ApplicationController
       # return
       #end
 
-      routeOfTrip = GoogleMapsHelper.get_routes(mapsJSON)
   #render routeOfTrip
-      #jsonStr = {:routes => routeOfTrip}
+
 
     #now we have a json array. we want to extract all the start_locations from them
     #extract the points along the route
-    arrayOfRouteLocations = GoogleMapsHelper.get_route_from_google_maps_json(routeOfTrip)
+    arrayOfRouteLocations = GoogleMapsHelper.get_route_from_google_maps_json(mapsJSON)
 
       #2. Push the stuff to routeBoxer.
       # arg1 should be an array of coordinate. arg2 should be the radius

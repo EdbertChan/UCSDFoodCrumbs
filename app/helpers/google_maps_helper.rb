@@ -22,10 +22,13 @@ Google_Maps.get_status(json)
     #1) Check if the string is formated ok as a JSON
     #2) Check if the status is ok
 
+    #3) Extract the steps/legs portion of the json
+    stepsOfRoute = get_routes(routeOfTripJson)
+
     #extract the boxes, if possible
     arrayOfCoordinates = Array.new()
 
-    routeOfTripJson.each do |item|
+    stepsOfRoute.each do |item|
       #Rails.logger.info item['start_location']
       starting_coordinate = item['start_location']
       lat = starting_coordinate['lat']
