@@ -49,7 +49,7 @@ class GetRestaurantListsController < ApplicationController
     mapsJSON = GetRestaurantList.get_google_maps(params)
 
       #check if it is valid
-     #jsonStr = {:routes => mapsJSON}
+     jsonStr = {:routes => mapsJSON}
 
 
       #if(GoogleMapsHelper.isValid(mapsJSON))
@@ -57,42 +57,40 @@ class GetRestaurantListsController < ApplicationController
       # return
       #end
 
-      #routeOfTrip = GoogleMapsHelper.get_routes(mapsJSON)
-     # jsonStr = {:routes => routeOfTrip}
+      routeOfTrip = GoogleMapsHelper.get_routes(mapsJSON)
+      #jsonStr = {:routes => routeOfTrip}
 
     #now we have a json array. we want to extract all the start_locations from them
-    #get lat lng put into array of arrays
-    #arrayOfRouteLocations = RouteBoxerHelper.get_route_from_google_maps_json(routeOfTrip)
+    #extract the points along the route
+    arrayOfRouteLocations = RouteBoxerHelper.get_route_from_google_maps_json(routeOfTrip)
 
       #2. Push the stuff to routeBoxer.
       # arg1 should be an array of coordinate. arg2 should be the radius
     #to run php code, we take the stdout of php and it gets assigned to a variable. This is just the location of
     #the script
-    arrayOfRouteLocations = ""
-    routeBoxerJSON = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, 5)
+    #returns an array of arrays
+    arrayOfBoxCoordinates = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, 5)
 
 
-    #Rails.logger.debug routeBoxerJSON
      #Yank out all the boxes, if possible.
-
      #If something goes wrong, just return and do not go to 3
      #arrayOfBoxes
 
       #3. Push each and every box to GooglePlaces
-      # hashOfPlacesJsonResponse = {}
-      #for i in 0...boxesArray.size
-      #  placeResponse = GetRestaurantList.get_restaurant_along_route(i)
-      # hashOfPlacesJsonResponse = GetRestaurantHelper.get_restaurant_json_hasher(hashOfPlacesJsonResponse, placeResponse)
-      #  end
+       hashOfPlacesJsonResponse = {}
+      for i in 0...boxesArray.size
+        placeResponse = GetRestaurantList.get_restaurant_along_route(arrayOfBoxCoordinates[i])
+       hashOfPlacesJsonResponse = GetRestaurantHelper.get_restaurant_json_hasher(hashOfPlacesJsonResponse, placeResponse)
+      end
 
       #Hash together the responses
-     #places = {:places => ActiveSupport::JSON.decode(hashOfPlacesJsonResponse)}
+     places = {:places => ActiveSupport::JSON.decode(hashOfPlacesJsonResponse)}
 
      #merge the results with the json string and return
      #render the json and return
-     #jsonStr = jsonStr.merge(places)
-#     render json: jsonStr
-puts(routeBoxerJSON)
+     jsonStr = jsonStr.merge(places)
+    render json: jsonStr
+#puts(routeBoxerJSON)
   end
 
   def testMethod
