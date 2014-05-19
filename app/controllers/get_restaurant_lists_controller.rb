@@ -1,32 +1,71 @@
-include GetRestaurantListHelper
+#include GetRestaurantListHelper
+require 'net/http'
+require 'rubygems'
+require 'json'
+require 'active_support'
 class GetRestaurantListsController < ApplicationController
+  include GetRestaurantListHelper
+  include JsonHelper
+  include GoogleMapsHelper
 
-
-#helper GetRestaurantListHelper
+#helper:all
 #need the filter
-before_filter :ensure_params_exist
-  # GET /get_restaurant_lists
-  # GET /get_restaurant_lists.json
+  helper_method :all
+#Check if the parameters exist before we do ANYTHING
+
+# GET /get_restaurant_lists
+# GET /get_restaurant_lists.json
 
   def index
 
-     #1. Check to see if we can process this anyway?
+    #1. Get the JSON Hash
+    mapsJSON = GetRestaurantList.get_google_maps(params)
 
-    #@get_restaurant_lists = GetRestaurantList.find(user_params)
-      @get_restaurant_lists = GetRestaurantList.all
-   puts get_route_directions_json(params)
+    #check if it is valid
+    jsonStr = {:routes => mapsJSON}
 
-    #2. Check to see if Google request is ok
+    #if(GoogleMapsHelper.get_status(mapsJSON) == 107)
+    #render json: jsonStr
+    # return
+    #end
+
+    #now we have a json array. we want to extract all the start_locations from them
+    #extract the points along the route
+
+   arrayOfRouteLocations = GoogleMapsHelper.get_route_from_google_maps_json(mapsJSON)
 
 
-    #3. Check to see if Yelp request is ok
+    #2. Push the stuff to routeBoxer.
+    # arg1 should be an array of coordinate. arg2 should be the radius
 
-    #4. Get the list and return it
-    render json: @get_restaurant_lists, status: 422
+    jsonArrayofUserDefinedRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, params[:radius])
+
+    #boxer has these as a json. We're going to convert these to an array of array of array of floats
+    arrayOfBoxCoordinatesUser = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofUserDefinedRouteBoxes)
+
+    #get it as google max
+    jsonArrayofGoogleMaxRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, params[:radius])
+
+    #boxer has these as a json. We're going to convert these to an array of array of array of floats
+    arrayOfBoxCoordinatesGoogleMax = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofGoogleMaxRouteBoxes)
+
+=begin
+    #3. Algoirthm
+    #send (RouteBoxer MAX google, RouteBoxer user radius)
+    render json: arrayOfBoxCoordinatesUser
+    #puts(arrayOfBoxCoordinates)
+=end
+puts(jsonArrayofUserDefinedRouteBoxes)
+render json:jsonArrayofUserDefinedRouteBoxes
   end
 
-  # GET /get_restaurant_lists/1
-  # GET /get_restaurant_lists/1.json
+  def testMethod
+    #this method is called by our helper to show a proof of concept
+    puts("GetRestaurantListsController.testMethod called!")
+  end
+
+# GET /get_restaurant_lists/1
+# GET /get_restaurant_lists/1.json
   def show
     @get_restaurant_list = GetRestaurantList.find(params[:id])
 
@@ -65,11 +104,5 @@ before_filter :ensure_params_exist
 
     head :no_content
   end
-protected
-   
-private
-  def ensure_params_exist
-return unless params[:origin].blank?
-render :json=>{:success=>false, :message=>"missing user_login parameter"}, :status=>0
+
 end
- end
