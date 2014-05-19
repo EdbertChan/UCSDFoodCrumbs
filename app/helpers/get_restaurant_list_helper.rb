@@ -33,7 +33,7 @@ end
     }
     ]
     }"
-return JSON.decode(json)
+return JSON.parse(json)
 #return RouteBoxes.getBoxes(routeBoxes)
   end
 
@@ -53,7 +53,7 @@ return JSON.decode(json)
 
     response = http.request(request)
 
-    return JSON.decode(response.body)
+    return JSON.parse(response.body)
 
     #return RestaurantsAlongRoute.getRestaurant(setOfPoints)
   end
