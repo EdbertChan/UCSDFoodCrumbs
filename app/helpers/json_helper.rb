@@ -66,4 +66,27 @@ module JsonHelper
       end
     end
   end
+
+
+
+
+  def self.query_json(url)
+
+
+
+    #key AIzaSyAAe8uFG4L8f_LYe-7etsNwdXraAUxIcPs
+
+    uri = URI(url)
+    http = Net::HTTP.new(uri.host, uri.port)
+
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Get.new(uri.request_uri)
+
+    response = http.request(request)
+
+    return JSON.decode(response.body)
+
+    #return RestaurantsAlongRoute.getRestaurant(setOfPoints)
+  end
   end

@@ -14,18 +14,19 @@ module GoogleMapsHelper
   end
 
   def self.get_status(json)
-Google_Maps.get_status(json)
-    end
+    Google_Maps.get_status(json)
+  end
 
   def self.get_route_from_google_maps_json(routeOfTripJson)
-    #check to see if this is a google maps valid json
-    #1) Check if the string is formated ok as a JSON
-    #2) Check if the status is ok
+  #should check but it is supposed to be already parsed coming in
+#check to see if this is a google maps valid json
+#1) Check if the string is formated ok as a JSON
+#2) Check if the status is ok
 
-    #3) Extract the steps/legs portion of the json
+#3) Extract the steps/legs portion of the json
     stepsOfRoute = get_routes(routeOfTripJson)
 
-    #extract the boxes, if possible
+#extract the boxes, if possible
     arrayOfCoordinates = Array.new()
 
     stepsOfRoute.each do |item|
@@ -43,4 +44,5 @@ Google_Maps.get_status(json)
     end
     return arrayOfCoordinates
   end
-  end
+
+end

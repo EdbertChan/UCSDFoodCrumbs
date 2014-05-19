@@ -53,9 +53,8 @@ return JSON.decode(json)
 
     response = http.request(request)
 
-    return JSON.parse(response.body)
+    return JSON.decode(response.body)
 
-        return JSON.decode(json)
     #return RestaurantsAlongRoute.getRestaurant(setOfPoints)
   end
 

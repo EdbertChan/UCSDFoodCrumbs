@@ -12,96 +12,60 @@ class GetRestaurantListsController < ApplicationController
 #need the filter
   helper_method :all
 #Check if the parameters exist before we do ANYTHING
-#before_filter :ensure_params_exist
 
-  # GET /get_restaurant_lists
-  # GET /get_restaurant_lists.json
-=begin
-  #1. Get the JSON from Maps
-   mapsJSON = GetRestaurantList.get_google_maps(params)
+# GET /get_restaurant_lists
+# GET /get_restaurant_lists.json
+
+  def index
+
+    #1. Get the JSON Hash
+    mapsJSON = GetRestaurantList.get_google_maps(params)
+
     #check if it is valid
     jsonStr = {:routes => mapsJSON}
 
-    #if(GoogleMapsHelper.isValid(mapsJSON))
-      #render json: jsonStr
-     # return
+    #if(GoogleMapsHelper.get_status(mapsJSON) == 107)
+    #render json: jsonStr
+    # return
     #end
-
-    routeOfTrip = GoogleMapsHelper.get_routes(mapsJSON)
-    #2. Push the stuff to routeBoxer. Ask Dheraj if he wants just the two points
-    # or if he just wants the google json (We have no idea)
-    #routeBoxes = GetRestaurantList.get_route_boxes(routeOfTrip)
-
-
-#this is now a jsonarry. how do we itterate though a json Array?
-    #3. Push each and every box to GooglePlaces
-   # hashOfPlacesJsonResponse = {}
-    #for i in 0...boxesArray.size
-     #  placeResponse = GetRestaurantList.get_restaurant_along_route(i)
-     # hashOfPlacesJsonResponse = GetRestaurantHelper.get_restaurant_json_hasher(hashOfPlacesJsonResponse, placeResponse)
-  #  end
-
-   render json: routeOfTrip
-=end
-  def index
-
-      #1. Get the JSON from Maps
-  mapsJSON = GetRestaurantList.get_google_maps(params)
-
-      #check if it is valid
-   jsonStr = {:routes => mapsJSON}
-
-
-      #if(GoogleMapsHelper.get_status(mapsJSON) == 107)
-      #render json: jsonStr
-      # return
-      #end
-
-  #render routeOfTrip
-
 
     #now we have a json array. we want to extract all the start_locations from them
     #extract the points along the route
-    arrayOfRouteLocations = GoogleMapsHelper.get_route_from_google_maps_json(mapsJSON)
 
-      #2. Push the stuff to routeBoxer.
-      # arg1 should be an array of coordinate. arg2 should be the radius
-    #to run php code, we take the stdout of php and it gets assigned to a variable. This is just the location of
-    #the script
-    #returns an array of arrays
-
-    #check the radius. If non numeric is not put in, we will skip the boxer and just return the array
-    #arrayOfBoxCoordinates = RouteBoxerHelper.get_route_boxes("foo", 5)
+   arrayOfRouteLocations = GoogleMapsHelper.get_route_from_google_maps_json(mapsJSON)
 
 
-     #Yank out all the boxes, if possible.
-     #If something goes wrong, just return and do not go to 3
-     #arrayOfBoxes
+    #2. Push the stuff to routeBoxer.
+    # arg1 should be an array of coordinate. arg2 should be the radius
+
+    jsonArrayofUserDefinedRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, params[:radius])
+
+    #boxer has these as a json. We're going to convert these to an array of array of array of floats
+    arrayOfBoxCoordinatesUser = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofUserDefinedRouteBoxes)
+
+    #get it as google max
+    jsonArrayofGoogleMaxRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, params[:radius])
+
+    #boxer has these as a json. We're going to convert these to an array of array of array of floats
+    arrayOfBoxCoordinatesGoogleMax = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofGoogleMaxRouteBoxes)
+
 =begin
-      #3. Push each and every box to GooglePlaces
-       hashOfPlacesJsonResponse = {}
-      for i in 0...boxesArray.size
-        placeResponse = GetRestaurantList.get_restaurant_along_route(arrayOfBoxCoordinates[i])
-       hashOfPlacesJsonResponse = GetRestaurantHelper.get_restaurant_json_hasher(hashOfPlacesJsonResponse, placeResponse)
-      end
-
-      #Hash together the responses
-     places = {:places => ActiveSupport::JSON.decode(hashOfPlacesJsonResponse)}
-
-     #merge the results with the json string and return
-     #render the json and return
-     jsonStr = jsonStr.merge(places)
+    #3. Algoirthm
+    #send (RouteBoxer MAX google, RouteBoxer user radius)
+    render json: arrayOfBoxCoordinatesUser
+    #puts(arrayOfBoxCoordinates)
 =end
-    render json: arrayOfRouteLocations
-#puts(arrayOfBoxCoordinates)
+puts(jsonArrayofUserDefinedRouteBoxes)
+render json:jsonArrayofUserDefinedRouteBoxes
   end
 
   def testMethod
     #this method is called by our helper to show a proof of concept
     puts("GetRestaurantListsController.testMethod called!")
   end
-  # GET /get_restaurant_lists/1
-  # GET /get_restaurant_lists/1.json
+
+# GET /get_restaurant_lists/1
+# GET /get_restaurant_lists/1.json
   def show
     @get_restaurant_list = GetRestaurantList.find(params[:id])
 
@@ -141,4 +105,4 @@ class GetRestaurantListsController < ApplicationController
     head :no_content
   end
 
- end
+end
