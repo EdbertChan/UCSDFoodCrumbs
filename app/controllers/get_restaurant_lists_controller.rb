@@ -24,10 +24,12 @@ class GetRestaurantListsController < ApplicationController
     #check if it is valid
     jsonStr = {:routes => mapsJSON}
 
-    #if(GoogleMapsHelper.get_status(mapsJSON) == 107)
-    #render json: jsonStr
-    # return
-    #end
+
+=begin
+      if(GoogleMapsHelper.get_status(mapsJSON) != 100)
+    render json: jsonStr
+     return
+    end
 
     #now we have a json array. we want to extract all the start_locations from them
     #extract the points along the route
@@ -49,14 +51,15 @@ class GetRestaurantListsController < ApplicationController
     #boxer has these as a json. We're going to convert these to an array of array of array of floats
     arrayOfBoxCoordinatesGoogleMax = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofGoogleMaxRouteBoxes)
 
-=begin
+
     #3. Algoirthm
     #send (RouteBoxer MAX google, RouteBoxer user radius)
     render json: arrayOfBoxCoordinatesUser
     #puts(arrayOfBoxCoordinates)
-=end
+
 puts(jsonArrayofUserDefinedRouteBoxes)
-render json:jsonArrayofUserDefinedRouteBoxes
+=end
+render json:mapsJSON
   end
 
   def testMethod
