@@ -5,6 +5,8 @@ gem 'rails', '4.0.2'
 
 gem 'rails-api'
 
+gem 'google_places'
+
 # Use sqlite3 as the database for Active Record
 #gem 'pg'
 gem 'sqlite3'

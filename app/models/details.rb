@@ -4,12 +4,12 @@ require 'json'
 require 'active_support'
 
 class Details < ActiveRecord::Base
-include JsonHelper
+include DetailsHelper
 
 
     def self.getDetails(ref)
-      url =  "https://maps.googleapis.com/maps/api/place/details/json?reference=#{ref}" + "&sensor=false" + "&key=AIzaSyBdfbDfA6R0H0e3gDPXHNIW4cNJJAEjSss"
-      response = JsonHelper.query_json(url)
-      @details = response
+      url =  DetailsHelper.build_url(ref)
+      response = DetailsHelper.query_url(url)
     end
+
 end
