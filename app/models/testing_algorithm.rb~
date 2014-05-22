@@ -1,0 +1,60 @@
+class TestingAlgorithm < ActiveRecord::Base
+
+def self.foo
+puts("hello world")
+return "this is the return"
+end
+
+def self.algorithm(coordinatesList,userRadius)
+	// radius in km
+	maxRadius = GoogleMaps.maxRadius
+	
+	queryList = Array.new
+	// while there are boxes in coordinatesList
+	while( coordinatesList.length > 0 )
+	{
+		// pop a box
+		latlngBounds = coordinatesList.pop()
+	
+		// calculate diagonal distance of box in km
+		radiusOfEarth = 6371
+		lat0 = latlngBounds[0][0] * Math::PI / 180
+		lat1 = latlngBounds[1][0] * Math::PI / 180 
+		changeInLat = (latlngBounds[0][0]-latlngBounds[1][0]).abs * Math::PI / 180 
+		changeInLng = (latlngBounds[0][1]-latlngBounds[1][1]).abs * Math::PI / 180 
+	
+		a = Math.sin(changeInLat/2) * Math.sin(changeInLng/2) + 
+			Math.cos(lat0) * Math.cos(lat1) *
+		    Math.sin(changeInLng/2) * Math.sin(changeInLng/2);
+		
+		c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		d = R * c
+		
+		radius = d/2;    
+		midLat = latlngBounds[0][0] + (latlngBounds[1][0] - latlngBounds[0][0])/2
+		midLng = latlngBounds[0][1] + (latlngBounds[1][1] - latlngBounds[0][1])/2
+		
+		if( radius > maxRadius )
+		{
+			// top left
+			coordinatesList.push([[ midLat,latlngBounds[0][1]],
+								  [ latlngBounds[1][0], midLng]] )
+			// top right
+			coordinatesList.push([[ latlngBounds[0][0],latlngBounds[0][1]],
+								  midLat, midLng]] )
+			// bottom left
+			coordinatesList.push([[ midLat,midLng],
+								  [ latlngBounds[1][0], latlngBounds[1][1]]] )
+								  
+			// bottom right
+			coordinatesList.push([[ latlngBounds[0][0],midLng],
+								  [ midLat, latlngBounds[1][1]]] )
+		}
+		else
+		{
+			queryList.push([[midLat,midLng],radius])
+		}
+	}
+end
+
+end
