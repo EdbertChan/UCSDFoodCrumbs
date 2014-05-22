@@ -88,6 +88,8 @@ def self.algorithm(maxRouteBoxer,userRouteBoxer,searchString)
             i--;
         }
     }
+
+    return placesList
 end
 
 end
