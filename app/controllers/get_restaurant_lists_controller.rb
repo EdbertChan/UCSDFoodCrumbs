@@ -3,6 +3,7 @@ require 'net/http'
 require 'rubygems'
 require 'json'
 require 'active_support'
+require 'yaml'
 class GetRestaurantListsController < ApplicationController
   include GetRestaurantListHelper
   include JsonHelper
@@ -17,24 +18,29 @@ class GetRestaurantListsController < ApplicationController
 # GET /get_restaurant_lists.json
 
   def index
+puts(ENV['GoogleMaps'])
+puts("hi")
 
     #1. Get the JSON Hash
     mapsJSON = GetRestaurantList.get_google_maps(params)
 
     #check if it is valid
-    jsonStr = {:routes => mapsJSON}
+    jsonStr = {:routes => ActiveSupport::JSON.decode(mapsJSON)}
 
 
-=begin
-      if(GoogleMapsHelper.get_status(mapsJSON) != 100)
+
+      if(GoogleMapsHelper.get_status(mapsJSON) !=  ENV["MAPS_VALID_CODE"])
     render json: jsonStr
      return
-    end
+      end
+
+
+
 
     #now we have a json array. we want to extract all the start_locations from them
     #extract the points along the route
 
-   arrayOfRouteLocations = GoogleMapsHelper.get_route_from_google_maps_json(mapsJSON)
+   arrayOfRouteLocations = GoogleMapsHelper.get_points(mapsJSON)
 
 
     #2. Push the stuff to routeBoxer.
@@ -50,8 +56,7 @@ class GetRestaurantListsController < ApplicationController
 
     #boxer has these as a json. We're going to convert these to an array of array of array of floats
     arrayOfBoxCoordinatesGoogleMax = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofGoogleMaxRouteBoxes)
-
-
+=begin
     #3. Algoirthm
     #send (RouteBoxer MAX google, RouteBoxer user radius)
     render json: arrayOfBoxCoordinatesUser
@@ -62,10 +67,6 @@ puts(jsonArrayofUserDefinedRouteBoxes)
 render json:mapsJSON
   end
 
-  def testMethod
-    #this method is called by our helper to show a proof of concept
-    puts("GetRestaurantListsController.testMethod called!")
-  end
 
 # GET /get_restaurant_lists/1
 # GET /get_restaurant_lists/1.json

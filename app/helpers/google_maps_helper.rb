@@ -1,7 +1,5 @@
 module GoogleMapsHelper
 
-  @@key = "AIzaSyCS9C8uXjI5_qL5Z31gXj9Zsp5q1QuXpgM"
-
   # helper method to retrieve our uri string
   def get_url(params)
 
@@ -20,7 +18,7 @@ module GoogleMapsHelper
 
     url = "https://maps.googleapis.com/maps/api/directions/" +
           "json?sensor=false&origin=" + origin +
-          "&destination=" + destination + "&key="+@@key
+          "&destination=" + destination + "&key="+ENV["GOOGLE_API_KEY"]
 
     url = url.gsub(' ','_')
   end
@@ -54,9 +52,10 @@ module GoogleMapsHelper
     # get our "status" key from the hash
     status = jsonRoute["status"]
 
+
     # determine what ERROR code to return depending on the status
-    if(status == "OK")
-      return 100
+    if(status == ENV["MAPS_VALID"])
+      return ENV["MAPS_VALID_CODE"]
     end
     if( status== "NOT_FOUND")
       return 101
@@ -120,16 +119,7 @@ module GoogleMapsHelper
 
   end
 
-  def self.get_routes(googleMapsJson)
-    #check if it is a json
 
-    #extract if it is relevant
-    routes = googleMapsJson['routes'][0]['legs'][0]['steps']
-
-    #return. Must note what happens on failure.
-    return routes
-
-  end
 
   def self.get_status(json)
     GoogleMap.get_json_status(json)
