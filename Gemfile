@@ -6,11 +6,11 @@ gem 'rails'
 gem 'rails-api'
 
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+#gem 'pg'
 #gem 'sqlite3'
 
 
-#gem 'coffee-rails'
+gem 'coffee-rails'
 gem 'php'
 
 # To use ActiveModel has_secure_password
