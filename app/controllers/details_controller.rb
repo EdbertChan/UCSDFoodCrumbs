@@ -3,7 +3,11 @@ require 'google_places'
 class DetailsController < ApplicationController
   def index
 
-    @detailsJSON = getDetails(params[:reference])
+    detailsJSON = Details.getDetails(params[:reference])
+    puts(detailsJSON)
+=begin
+    detailsJSON = Details.getDetails("CoQBeQAAAI_kB4N-5yXoG6qKuQEcZF-zX5NFA5XVDcXYgM4wcEkduYsHHJVPdui4RAWVJV3n-qrL10bdBS4deWVEVg0U6pugKBAjLiE8u4ZEhHAFZE8p4st5ZEfQmaGj1DL6LBlaWOd1WIZCUKMn1VTUvNter3kDywkXxEH443kpNKQsKcU-EhD6u5TB89BjbTVQqLq4N4FzGhSg9d_2BvAbPWt4rBx9x0nj_ILkng")
+    puts(detailsJSON)
     
 =begin
         #@query = Places.find( 33.742006, -117.843843 )

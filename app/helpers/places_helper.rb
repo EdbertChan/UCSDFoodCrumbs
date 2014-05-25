@@ -1,14 +1,35 @@
-require 'google_places'
 require 'json'
-
 module PlacesHelper
-@client = GooglePlaces::Client.new('AIzaSyBdfbDfA6R0H0e3gDPXHNIW4cNJJAEjSss') 
+    API_KEY = 'AIzaSyBdfbDfA6R0H0e3gDPXHNIW4cNJJAEjSss'
+
+    def self.build_url(lat, long, radius, type )
+        url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}" + "&radius=#{radius}" + "&types=#{type}" + "&sensor=false&key=#{API_KEY}"
+    end
+
+    def self.query_url(url)
+        uri = URI(url)
+        http = Net::HTTP.new(uri.host, uri.port)
+
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        request = Net::HTTP::Get.new(uri.request_uri)
+
+        response = http.request(request)
+
+        foo = JSON.parse(response.body)
+        foo.to_json
+    end
+=begin
+    @client = GooglePlaces::Client.new( API_KEY )
+
     def self.query(lat, long, radius, type)
         if type == ""
-            query = @client.spots( lat, long, :radius => radius )
+            return @client.spots( lat, long, radius: radius )
         else
-            query = @client.spots( lat, long, :types => type, :radius=> radius )
+            return @client.spots( lat, long, types: type, radius: radius )
+
         end
-        return query
     end
+=end
+
 end
