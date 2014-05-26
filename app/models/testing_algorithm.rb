@@ -83,21 +83,21 @@ def self.filterResults( userRouteBoxer, placesList )
     while i  < placesList["results"].length
         duplicate = true
         for j in 0..(userRouteBoxer.length-1)
-            if( placesList["results"][i]["geometry"]["location"]["lat"] >= userRouteBoxer[j][0][0] &&
-                placesList["results"][i]["geometry"]["location"]["lat"] <= userRouteBoxer[j][1][0] &&
-                placesList["results"][i]["geometry"]["location"]["lng"] >= userRouteBoxer[j][0][1] &&
-                placesList["results"][i]["geometry"]["location"]["lng"] <= userRouteBoxer[j][1][1] )
+            if( placesList["results"][i]["geometry"]["location"]["lat"] >= userRouteBoxer[j][1][0] &&
+                placesList["results"][i]["geometry"]["location"]["lat"] <= userRouteBoxer[j][0][0] &&
+                placesList["results"][i]["geometry"]["location"]["lng"] >= userRouteBoxer[j][1][1] &&
+                placesList["results"][i]["geometry"]["location"]["lng"] <= userRouteBoxer[j][0][1] )
                 duplicate = false
                 break
             end
         end
-        if duplicate
+        if duplicate != false
             placesList["results"].delete_at(i)
         else
         	i = i + 1
         end
     end
-    return json: placesList
+    return JSON.generate(placesList)
 end
 
 end

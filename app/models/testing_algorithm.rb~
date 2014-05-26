@@ -91,13 +91,13 @@ def self.filterResults( userRouteBoxer, placesList )
                 break
             end
         end
-        if duplicate
+        if duplicate != false
             placesList["results"].delete_at(i)
         else
         	i = i + 1
         end
     end
-    return json:placesList
+    return JSON.generate(placesList)
 end
 
 end
