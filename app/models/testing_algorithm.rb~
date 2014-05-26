@@ -41,7 +41,7 @@ def self.resizeBoxesToCircles(maxRouteBoxer,searchString)
         midLng = latlngBounds[0][1] + (latlngBounds[1][1] - latlngBounds[0][1])/2
         
         if( radius <= maxRadius )
-            queryList.push([midLat,midLng,radius,searchString])
+            queryList.push([midLat,midLng,radius*1000,searchString])
         else
             if( changeInLat > changeInLng )
                 # top box
@@ -69,7 +69,7 @@ def self.placesQuery(queryList)
     placesList = JSON.parse(Places.findPlaces(queryList[0][0],queryList[0][1],queryList[0][2],queryList[0][3]))
     
     for i in 1..queryList.length-1
-        placesList["results"].concat (JSON.parse(Places.getPlaces(queryList[i][0],queryList[i][1],queryList[i][2],queryList[i][3])))["results"]
+        placesList["results"].concat (JSON.parse(Places.findPlaces(queryList[i][0],queryList[i][1],queryList[i][2],queryList[i][3])))["results"]
     end
 
     placesList["results"] = placesList["results"].uniq # remove duplicates
