@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   def index
  
     Places.findPlaces(32.880578,-117.234832, 1000 )
-    Places.findPlaces(32.880506,-117.234832, 50000, "food")
+    Places.findPlaces(32.880506,-117.234832, 50000, "mexican")
     #first register client
     #@places = PlacesController.query( 33.742006, -117.843843, 1000, "Mexican")
 =begin   
