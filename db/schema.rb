@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514194223) do
+ActiveRecord::Schema.define(version: 20140526040255) do
+
+  create_table "places", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "testing_algorithms", force: true do |t|
     t.datetime "created_at"

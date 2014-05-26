@@ -66,10 +66,10 @@ end
 
 def self.placesQuery(queryList)
     # query Places.getPlaces
-    placesList = JSON.parse(Places.getPlaces(queryList[0][0],queryList[0][1],queryList[0][2],queryList[0][3]))
+    placesList = JSON.parse(Places.findPlaces(queryList[0][0],queryList[0][1],queryList[0][2],queryList[0][3]))
     
     for i in 1..queryList.length-1
-        placesList["results"].concat (JSON.parse(Places.getPlaces(queryList[i][0],queryList[i][1],queryList[i][2],queryList[i][3])))["results"]
+        placesList["results"].concat (JSON.parse(Places.findPlaces(queryList[i][0],queryList[i][1],queryList[i][2],queryList[i][3])))["results"]
     end
 
     placesList["results"] = placesList["results"].uniq # remove duplicates
