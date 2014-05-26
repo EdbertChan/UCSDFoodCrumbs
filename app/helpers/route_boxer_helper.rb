@@ -78,6 +78,6 @@ def self.convert_route_boxes_json_to_array(jsonArrayRouteBoxesRawString)
   end
 private
     def self.checkValidInputs(arrayOfRouteLocations, radius)
-      render :json => { :errors => @model.errors }
+      render json: { errors: @model.errors }
     end
 end

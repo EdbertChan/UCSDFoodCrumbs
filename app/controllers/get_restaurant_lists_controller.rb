@@ -22,7 +22,7 @@ class GetRestaurantListsController < ApplicationController
     mapsJSON = GetRestaurantList.get_google_maps(params)
 
     #check if it is valid
-    jsonStr = {:routes => mapsJSON}
+    jsonStr = {routes: mapsJSON}
 
     #if(GoogleMapsHelper.get_status(mapsJSON) == 107)
     #render json: jsonStr

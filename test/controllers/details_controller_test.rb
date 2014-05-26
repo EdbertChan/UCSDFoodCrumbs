@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class DetailsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+   def test_the_truth
+     assert true
+   end
 end
