@@ -6,7 +6,7 @@ module PlacesHelper
         if type == ""
             url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}" + "&radius=#{radius}" + "&types=restaurant" + "&sensor=false&key=#{API_KEY}"
         else
-            url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{type}+food" + "&sensor=true" + "&location=#{lat},#{long}" + "&radius=#{radius}" + "&key=#{API_KEY}"
+            url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}&radius=#{radius}&keyword=#{type}+food&sensor=false&key=#{API_KEY}"
         end
         return url
     end
@@ -24,4 +24,17 @@ module PlacesHelper
         foo = JSON.parse(response.body)
         foo.to_json
     end
+=begin
+@client = GooglePlaces::Client.new( API_KEY )
+
+def self.query(lat, long, radius, type)
+if type == ""
+return @client.spots( lat, long, radius: radius )
+else
+return @client.spots( lat, long, types: type, radius: radius )
+
+end
+end
+=end
+
 end
