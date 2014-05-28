@@ -1,10 +1,5 @@
 class TestingAlgorithm < ActiveRecord::Base
 
-def self.foo
-puts("hello world")
-return "this is the return"
-end
-
 def self.algorithm(maxRouteBoxer,userRouteBoxer,searchString)
     queryList = resizeBoxesToCircles(maxRouteBoxer,searchString) # setup query
     placesResults = placesQuery(queryList)
@@ -85,16 +80,16 @@ def self.filterResults( userRouteBoxer, placesList )
     while i  < placesList["results"].length
         duplicate = true
         for j in 0..(userRouteBoxer.length-1)
-            if( placesList["results"][i]["geometry"]["location"]["lat"] >= userRouteBoxer[j][1][0] &&
-                placesList["results"][i]["geometry"]["location"]["lat"] <= userRouteBoxer[j][0][0] &&
-                placesList["results"][i]["geometry"]["location"]["lng"] >= userRouteBoxer[j][1][1] &&
-                placesList["results"][i]["geometry"]["location"]["lng"] <= userRouteBoxer[j][0][1] )
+            if( placesList["results"][i]["geometry"]["location"]["lat"] <= userRouteBoxer[j][1][0] &&
+                placesList["results"][i]["geometry"]["location"]["lat"] >= userRouteBoxer[j][0][0] &&
+                placesList["results"][i]["geometry"]["location"]["lng"] <= userRouteBoxer[j][1][1] &&
+                placesList["results"][i]["geometry"]["location"]["lng"] >= userRouteBoxer[j][0][1] )
                 duplicate = false
                 break
             end
         end
         if duplicate != false
-            placesList["results"].delete_at(i)
+            placesList["results"].slice!(i)
         else
         	i = i + 1
         end
