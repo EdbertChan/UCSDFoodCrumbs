@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TestingAlgorithmTest < ActiveSupport::TestCase
+class PlacesFinderTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

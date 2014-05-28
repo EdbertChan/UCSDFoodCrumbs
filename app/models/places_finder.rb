@@ -1,6 +1,6 @@
-class TestingAlgorithm < ActiveRecord::Base
+class PlacesFinder < ActiveRecord::Base
 
-def self.algorithm(maxRouteBoxer,userRouteBoxer,searchString)
+def self.getPlaces(maxRouteBoxer,userRouteBoxer,searchString)
     queryList = resizeBoxesToCircles(maxRouteBoxer,searchString) # setup query
     placesResults = placesQuery(queryList)
     placesList = filterResults(userRouteBoxer,placesResults)
