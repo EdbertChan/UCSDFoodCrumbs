@@ -1,7 +1,8 @@
-require 'test_helper'
+require 'test/unit'
 
-class DetailsTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class DetailsTest < Test::Unit::TestCase
+
+   def test_better_be_true
+     assert true
+   end
 end
