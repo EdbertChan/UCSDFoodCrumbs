@@ -3,6 +3,7 @@ ruby '2.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
+gem 'rails-api'
 gem 'google_places'
 gem "passenger"
 
@@ -20,6 +21,7 @@ end
 #specify gem's dependency in google_places.gemspec
 
 gem 'coffee-rails'
+gem 'php'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
