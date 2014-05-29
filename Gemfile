@@ -4,14 +4,10 @@ ruby '2.1.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-gem 'rails-api'
-
-gem 'google_places'
-
 # Use sqlite3 as the database for Active Record
 #gem 'pg'
 group :development do
-    gem 'sqlite3', '1.3.9'
+    gem 'sqlite3', '1.3.9', :require => "sqlite3"
 end
 
 group :production do
@@ -21,9 +17,7 @@ end
 
 #specify gem's dependency in google_places.gemspec
 
-
-  gem 'coffee-rails'
-gem 'php'
+gem 'coffee-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
