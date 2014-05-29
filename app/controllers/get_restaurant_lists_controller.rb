@@ -52,7 +52,7 @@ puts("hi")
     arrayOfBoxCoordinatesUser = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofUserDefinedRouteBoxes)
 
     #get it as google max
-    jsonArrayofGoogleMaxRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, params[:radius])
+    jsonArrayofGoogleMaxRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations,50000)
 
     #boxer has these as a json. We're going to convert these to an array of array of array of floats
     arrayOfBoxCoordinatesGoogleMax = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofGoogleMaxRouteBoxes)
@@ -64,6 +64,9 @@ puts("hi")
 
 puts(jsonArrayofUserDefinedRouteBoxes)
 =end
+
+
+    PlacesFinder.getPlaces(jsonArrayofGoogleMaxRouteBoxes,jsonArrayofUserDefinedRouteBoxes,params[:term])
 render json:mapsJSON
   end
 
