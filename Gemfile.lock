@@ -63,7 +63,7 @@ GEM
       daemon_controller (>= 1.2.0)
       rack
       rake (>= 0.8.1)
-    pg (0.15.1)
+    pg (0.17.1)
     php (0.1.1)
       ParseTree (>= 3.0.4)
       open4 (>= 1.0.1)
@@ -84,6 +84,11 @@ GEM
     rails-api (0.2.1)
       actionpack (>= 3.2.11)
       railties (>= 3.2.11)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (4.0.2)
       actionpack (= 4.0.2)
       activesupport (= 4.0.2)
@@ -117,7 +122,8 @@ DEPENDENCIES
   coffee-rails
   google_places
   passenger
-  pg (= 0.15.1)
+  pg
   php
   rails (= 4.0.2)
   rails-api
+  rails_12factor

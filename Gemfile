@@ -9,6 +9,7 @@ gem "passenger"
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
+gem 'rails_12factor', group: :production
 
 #specify gem's dependency in google_places.gemspec
 
