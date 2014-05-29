@@ -8,8 +8,7 @@ gem 'google_places'
 gem "passenger"
 
 # Use sqlite3 as the database for Active Record
-#gem 'pg'
-    gem 'pg', '0.15.1'
+gem 'pg'
 
 #specify gem's dependency in google_places.gemspec
 
