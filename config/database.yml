@@ -5,27 +5,27 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  encoding: unicode
-  database: foodcrumbs_development
+  encoding: utf8
+  database: project_development
   pool: 5
-  username: UCSDFood
+  username:
   password:
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
+test: &TEST
   adapter: postgresql
-  encoding: unicode
-  database: foodcrumbs_development
+  encoding: utf8
+  database: project_test
   pool: 5
-  username: UCSDFood
+  username:
   password:
 
 production:
   adapter: postgresql
-  encoding: unicode
-  database: foodcrumbs_development
+  encoding: utf8
+  database: project_production
   pool: 5
-  username: UCSDFood
+  username:
   password:
+
+cucumber:
+  <<: *TEST

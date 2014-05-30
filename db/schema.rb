@@ -11,31 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521201840) do
+ActiveRecord::Schema.define(version: 20140528174824) do
 
-create_table "get_restaurant_lists", force: true do |t|
-    t.integer  "errorCode"
-    t.string   "message"
-    t.string   "googleRoute"
-    t.string   "listOfRestaurants"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-end
-
-create_table "get_restaurants", force: true do |t|
-    t.integer  "errorCode"
-    t.string   "message"
-    t.string   "googleRoute"
-    t.string   "listOfRestaurants"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "details", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "get_restaurant_lists", force: true do |t|
+    t.integer  "errorCode"
+    t.string   "message"
+    t.string   "googleRoute"
+    t.string   "listOfRestaurants"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "google_maps", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "places", force: true do |t|
     t.datetime "created_at"
@@ -43,11 +41,6 @@ end
   end
 
   create_table "places_finders", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "testing_algorithms", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
