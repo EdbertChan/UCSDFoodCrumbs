@@ -3,24 +3,37 @@ module GoogleMapsHelper
   # helper method to retrieve our uri string
   def get_url(params)
 
-    origin = ""
-    destination = ""
+    # set our params to variables, this makes sure we have variables set
+    # incase the app sent in empty string params
+    origin = params[:origin]
+    destination = params[:destination]
 
-    if(params[:origin] != nil)
-      origin = params[:origin]
+    # handle nil checks incase the Application dev. does not call our app
+    # correctly 
+    if(origin == nil && destination == nil)
+        origin = ""
+        destination = ""
+    elsif(origin == nil && destination != nil)
+        origin = ""
+    elsif(origin != nil && destination == nil)
+        destination = ""
     end
 
-    if(params[:destination] != nil)
-      destination = params[:destination]
-    else
-      destination = origin
+    # following checks will handle the case when the app wants to do a single
+    # location check
+    if(origin.length == 0 && destination.length != 0)
+        origin = destination
+    elsif(origin.length!= 0 && destination.length == 0)
+        destination = origin
     end
-
+    
+   
     url = "https://maps.googleapis.com/maps/api/directions/" +
           "json?sensor=false&origin=" + origin +
           "&destination=" + destination + "&key="+ENV["GOOGLE_API_KEY"]
 
     url = url.gsub(' ','_')
+
   end
 
   # GET_JSON method to retrieve json from our google
