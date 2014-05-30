@@ -14,6 +14,7 @@ gem 'google_places'
 gem 'mysql2'
 gem 'unicorn'
 gem 'capistrano'
+gem 'rvm-capistrano'
 #specify gem's dependency in google_places.gemspec
 
 
