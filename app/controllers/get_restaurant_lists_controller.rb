@@ -18,8 +18,6 @@ class GetRestaurantListsController < ApplicationController
 # GET /get_restaurant_lists.json
 
   def index
-puts(ENV['GoogleMaps'])
-puts("hi")
 
     #1. Get the JSON Hash
     mapsJSON = GetRestaurantList.get_google_maps(params)
@@ -58,16 +56,20 @@ puts("hi")
     arrayOfBoxCoordinatesGoogleMax = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofGoogleMaxRouteBoxes)
 =begin
     #3. Algoirthm
-    #send (RouteBoxer MAX google, RouteBoxer user radius)
-    render json: arrayOfBoxCoordinatesUser
-    #puts(arrayOfBoxCoordinates)
+arrayOfBoxCoordinates = RouteBoxerHelper.get_route_boxes("foo", 5)
+  for i in 0...boxesArray.size
+         placeResponse = GetRestaurantList.get_restaurant_along_route(arrayOfBoxCoordinates[i])
+       hashOfPlacesJsonResponse = GetRestaurantHelper.get_restaurant_json_hasher(hashOfPlacesJsonResponse, placeResponse)
+    end
 
-puts(jsonArrayofUserDefinedRouteBoxes)
 =end
 #need to parse
-   p arrayOfBoxCoordinatesGoogleMax;
-   PlacesFinder.getPlaces(arrayOfBoxCoordinatesGoogleMax,arrayOfBoxCoordinatesUser,params[:term])
-#render json:mapsJSON
+   #p arrayOfBoxCoordinatesUser;
+places = PlacesFinder.getPlaces(arrayOfBoxCoordinatesGoogleMax,arrayOfBoxCoordinatesUser,params[:term])
+    jsonPlaces = {:places => ActiveSupport::JSON.decode(places)}
+    jsonStr = jsonStr.merge(jsonPlaces)
+
+render json:jsonStr
   end
 
 
