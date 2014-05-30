@@ -21,6 +21,6 @@ production:
   database: DB_NAME
   pool: 5
   host: localhost
-  username: DB_USER
-  password: YOUR_PASSWORD_HERE
+  username: deploy
+  password: UCSDFoodCrumbs 
   socket: /var/run/mysqld/mysqld.sock

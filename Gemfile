@@ -10,20 +10,17 @@ gem 'google_places'
 
 # Use sqlite3 as the database for Active Record
 #gem 'pg'
-#gem 'sqlite3'
-gem 'mysql2'
-gem 'unicorn'
-gem 'capistrano', '2.11.2'
-gem 'rvm-capistrano'
+gem 'sqlite3'
+gem 'capistrano', '~> 3.1.0'
+gem 'capistrano-bundler', '~> 1.1.2'
+gem 'capistrano-rails', '~> 1.1.1'
 #specify gem's dependency in google_places.gemspec
-
-
+gem 'capistrano-rvm'
 #gem 'coffee-rails'
 gem 'php'
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-
+gem 'capistrano-rbenv', github: "capistrano/rbenv"
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
