@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-require 'test_helper'
-
-class PlacesTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-=======
 require 'test/unit'
 
 class PlacesTest < Test::Unit::TestCase
@@ -33,5 +25,4 @@ class PlacesTest < Test::Unit::TestCase
          assert testOutput["name"] == expectedOutput["name"]
      end
    end
->>>>>>> origin/Jesus
 end

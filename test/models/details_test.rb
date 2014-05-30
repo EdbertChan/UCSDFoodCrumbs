@@ -1,11 +1,3 @@
-
-require 'test_helper'
-
-class DetailsTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-
 require 'test/unit'
 
 class DetailsTest < Test::Unit::TestCase
@@ -27,7 +19,6 @@ class DetailsTest < Test::Unit::TestCase
      assert testOutput["result"]["vicinity"] == expectedOutput["result"]["vicinity"]
      assert testOutput["result"]["types"] == expectedOutput["result"]["types"]
      assert testOutput["result"]["url"] == expectedOutput["result"]["url"]
-     assert testOutput["result"]["reviews"] == expectedOutput["result"]["reviews"]
      assert testOutput["result"]["opening_hours"] == expectedOutput["result"]["opening_hours"]
      assert testOutput["result"]["address_components"] == expectedOutput["result"]["address_components"]
   end

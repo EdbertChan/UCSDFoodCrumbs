@@ -1,4 +1,5 @@
 FoodCrumbs::Application.routes.draw do
+  get 'restaurantInfo' => 'details#index'
 
   resources :google_maps, except: [:new, :edit]
   resources :get_restaurant_lists, except: [:new, :edit]
@@ -8,7 +9,6 @@ FoodCrumbs::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
