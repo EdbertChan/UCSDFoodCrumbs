@@ -15,6 +15,7 @@ gem 'rails_12factor', group: :production
 
 gem 'coffee-rails'
 gem 'php'
+gem 'thin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
