@@ -64,10 +64,10 @@ puts("hi")
 
 puts(jsonArrayofUserDefinedRouteBoxes)
 =end
+#need to parse
 
-
-    PlacesFinder.getPlaces(jsonArrayofGoogleMaxRouteBoxes,jsonArrayofUserDefinedRouteBoxes,params[:term])
-render json:mapsJSON
+   PlacesFinder.getPlaces(arrayOfBoxCoordinatesGoogleMax,arrayOfBoxCoordinatesUser,params[:term])
+#render json:mapsJSON
   end
 
 
