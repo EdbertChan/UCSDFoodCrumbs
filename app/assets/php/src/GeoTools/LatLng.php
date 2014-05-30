@@ -1,7 +1,7 @@
 <?php
 
 namespace GeoTools;
-require("GeoKit/LatLng.php");
+require("/GeoKit/LatLng.php");
 /**
  * Description of LatLng
  *
