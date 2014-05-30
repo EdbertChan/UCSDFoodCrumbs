@@ -5,6 +5,7 @@ server "192.241.180.205", :web, :app, :db, primary: true
 
 set :application, "UCSDFoodCrumbs"
 set :user, "deploy"
+set :password, "UCSDFoodCrumbs"
 set :port, 22
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
@@ -16,7 +17,7 @@ set :branch, "master"
 
 
 default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
+ssh_options[:use_agent] = false 
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 
