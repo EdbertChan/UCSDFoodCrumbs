@@ -13,7 +13,7 @@ gem 'google_places'
 #gem 'sqlite3'
 gem 'mysql2'
 gem 'unicorn'
-gem 'capistrano'
+gem 'capistrano', '2.11.2'
 gem 'rvm-capistrano'
 #specify gem's dependency in google_places.gemspec
 
