@@ -4,6 +4,8 @@ require 'rubygems'
 require 'json'
 require 'active_support'
 require 'yaml'
+
+
 class GetRestaurantListsController < ApplicationController
   include GetRestaurantListHelper
   include JsonHelper
@@ -31,8 +33,6 @@ class GetRestaurantListsController < ApplicationController
     render json: jsonStr
      return
       end
-
-
 
 
     #now we have a json array. we want to extract all the start_locations from them

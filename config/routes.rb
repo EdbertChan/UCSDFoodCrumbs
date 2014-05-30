@@ -2,7 +2,6 @@ FoodCrumbs::Application.routes.draw do
 
   resources :google_maps, except: [:new, :edit]
   resources :get_restaurant_lists, except: [:new, :edit]
-
   resources :testing_algorithms, except: [:new, :edit]
 
   # The priority is based upon order of creation: first created -> highest priority.

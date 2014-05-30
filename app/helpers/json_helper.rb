@@ -72,8 +72,6 @@ module JsonHelper
 
   def self.query_json(url)
 
-
-
     #key AIzaSyAAe8uFG4L8f_LYe-7etsNwdXraAUxIcPs
 
     uri = URI(url)
@@ -85,8 +83,12 @@ module JsonHelper
 
     response = http.request(request)
 
-    return JSON.decode(response.body)
+    puts("hello world\n")
+    puts(response)
+
+    foo = JSON.parse(response.body)
+    puts(foo.to_json)
 
     #return RestaurantsAlongRoute.getRestaurant(setOfPoints)
-  end
+   end
   end
