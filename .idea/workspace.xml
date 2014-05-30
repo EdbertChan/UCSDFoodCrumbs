@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d51bed2e-bbf9-4924-8457-9cf613f2a7d5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/route_boxer_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/route_boxer_helper.rb" />
     </list>
     <ignored path="UCSDFoodCrumbs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="get_restaurant_lists_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="get_restaurant_lists_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="56" selection-start="2042" selection-end="2042" vertical-scroll-proportion="0.6122449" vertical-offset="660" max-vertical-offset="1815">
+            <state line="69" column="21" selection-start="2105" selection-end="2105" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="1815">
               <folding />
             </state>
           </provider>
@@ -71,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="route_boxer_helper.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="route_boxer_helper.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/helpers/route_boxer_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="42" selection-start="734" selection-end="767" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="1320">
+            <state line="62" column="37" selection-start="1701" selection-end="1701" vertical-scroll-proportion="0.84183675" vertical-offset="435" max-vertical-offset="1335">
               <folding />
             </state>
           </provider>
@@ -132,13 +131,13 @@
         <option value="$PROJECT_DIR$/test/models/get_restaurant_list_test.rb" />
         <option value="$PROJECT_DIR$/app/assets/php/getBoxes.php" />
         <option value="$PROJECT_DIR$/app/helpers/google_maps_helper.rb" />
-        <option value="$PROJECT_DIR$/app/helpers/route_boxer_helper.rb" />
         <option value="$PROJECT_DIR$/app/helpers/json_helper.rb" />
         <option value="$PROJECT_DIR$/Gemfile.lock" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb" />
         <option value="$PROJECT_DIR$/app/assets/php/src/getBoxes.php" />
         <option value="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
+        <option value="$PROJECT_DIR$/app/helpers/route_boxer_helper.rb" />
       </list>
     </option>
   </component>
@@ -1012,16 +1011,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/route_boxer_helper.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="42" selection-start="734" selection-end="767" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="1320">
+        <state line="69" column="21" selection-start="2105" selection-end="2105" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="1815">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/helpers/route_boxer_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="56" selection-start="2042" selection-end="2042" vertical-scroll-proportion="0.6122449" vertical-offset="660" max-vertical-offset="1815">
+        <state line="62" column="37" selection-start="1701" selection-end="1701" vertical-scroll-proportion="0.84183675" vertical-offset="435" max-vertical-offset="1335">
           <folding />
         </state>
       </provider>

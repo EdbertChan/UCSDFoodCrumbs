@@ -58,8 +58,9 @@ def self.convert_route_boxes_json_to_array(jsonArrayRouteBoxesRawString)
 
       boxCoordinates = Array.new()
 
-      boxCoordinates.push(upperRight)
+
       boxCoordinates.push(bottomLeft)
+      boxCoordinates.push(upperRight)
       arrayOfBoxCoordinates.push(boxCoordinates)
     end
     return arrayOfBoxCoordinates
