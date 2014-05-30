@@ -4,28 +4,23 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-  adapter: postgresql
-  encoding: utf8
-  database: project_development
+  adapter: sqlite3
+  database: db/development.sqlite3
   pool: 5
-  username:
-  password:
-
-test: &TEST
-  adapter: postgresql
-  encoding: utf8
-  database: project_test
+  timeout: 5000
+ 
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
   pool: 5
-  username:
-  password:
-
+  timeout: 5000
+ 
 production:
-  adapter: postgresql
+  adapter: mysql2
   encoding: utf8
-  database: project_production
+  database: DB_NAME
   pool: 5
-  username:
-  password:
-
-cucumber:
-  <<: *TEST
+  host: localhost
+  username: DB_USER
+  password: YOUR_PASSWORD_HERE
+  socket: /var/run/mysqld/mysqld.sock

@@ -9,9 +9,11 @@ gem 'rails-api'
 gem 'google_places'
 
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+#gem 'pg'
 #gem 'sqlite3'
-
+gem 'mysql2'
+gem 'unicorn'
+gem 'capistrano'
 #specify gem's dependency in google_places.gemspec
 
 
@@ -29,6 +31,6 @@ gem 'php'
 
 # Deploy with Capistrano
 # gem 'capistrano', :group => :development
-
+#gem 'capistrano', '~> 3.1.0'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
