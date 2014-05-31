@@ -4,8 +4,8 @@ class PlacesController < ApplicationController
   def index
  
     #foo = Places.findPlaces (params[:lat], params[:long], params[:radius], params[:type])
-    foo = Places.findPlaces(32.880578,-117.234832, 150 )
-    Places.findPlaces(32.880506,-117.234832, 50, "mexican")
+    Places.findPlaces(32.880578,-117.234832, 150 )
+    foo = Places.findPlaces(32.880506,-117.234832, 150, "mexican")
     puts(foo)
     #first register client
     #@places = PlacesController.query( 33.742006, -117.843843, 1000, "Mexican")
