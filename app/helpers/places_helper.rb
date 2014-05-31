@@ -1,12 +1,22 @@
 require 'json'
 module PlacesHelper
-    API_KEY = 'AIzaSyARCJzx62dNJ2eYWbV8bu0c6sU8LSF73P0'
 
     def self.build_url(lat, long, radius, type )
+        a = rand(4)
+        case a
+        when 0
+            api_key = 'AIzaSyARCJzx62dNJ2eYWbV8bu0c6sU8LSF73P0'
+        when 1
+            api_key = 'AIzaSyDcKmfg6IyjBMtSIREJEeYX1vRX1G_gUEc'
+        when 2
+            api_key = 'AIzaSyDtdYEXhy0vOMwoPEASOjp10R6DuUKjBv0'
+        when 3
+            api_key = 'AIzaSyCzGNpS3LtGLe3NVSfSm3IfqUi97DL_Rr4'
+        end
         if type == ""
-            url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}" + "&radius=#{radius}" + "&types=restaurant" + "&sensor=false&key=#{API_KEY}"
+            url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}" + "&radius=#{radius}" + "&types=restaurant" + "&sensor=false&key=#{api_key}"
         else
-            url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}&radius=#{radius}&keyword=#{type}+food&sensor=false&key=#{API_KEY}"
+            url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}&radius=#{radius}&keyword=#{type}+food&sensor=false&key=#{api_key}"
         end
         return url
     end
