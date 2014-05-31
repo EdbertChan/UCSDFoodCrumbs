@@ -3,8 +3,10 @@ class PlacesController < ApplicationController
   API_KEY = 'AIzaSyBdfbDfA6R0H0e3gDPXHNIW4cNJJAEjSss'
   def index
  
-    Places.findPlaces(32.880578,-117.234832, 150 )
-    Places.findPlaces(32.880506,-117.234832, 50, "mexican")
+    foo = Places.findPlaces (params[:lat], params[:long], params[:radius], params[:type])
+    #Places.findPlaces(32.880578,-117.234832, 150 )
+    #Places.findPlaces(32.880506,-117.234832, 50, "mexican")
+    puts(foo)
     #first register client
     #@places = PlacesController.query( 33.742006, -117.843843, 1000, "Mexican")
 =begin   
