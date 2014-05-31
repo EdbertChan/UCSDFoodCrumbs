@@ -1,6 +1,6 @@
 require 'json'
 module PlacesHelper
-    API_KEY = 'AIzaSyCS9C8uXjI5_qL5Z31gXj9Zsp5q1QuXpgM'
+    API_KEY = 'AIzaSyC0ht6wjGCRpt9DyIiUrU2FQWxUOfYOZt8'
 
     def self.build_url(lat, long, radius, type )
         if type == ""
