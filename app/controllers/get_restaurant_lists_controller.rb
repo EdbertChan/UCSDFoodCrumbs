@@ -66,7 +66,10 @@ arrayOfBoxCoordinates = RouteBoxerHelper.get_route_boxes("foo", 5)
 =end
 #need to parse
    #p arrayOfBoxCoordinatesUser;
+
 places = PlacesFinder.getPlaces(arrayOfBoxCoordinatesGoogleMax,arrayOfBoxCoordinatesUser,params[:term])
+
+
     jsonPlaces = {:places => ActiveSupport::JSON.decode(places)}
     jsonStr = jsonStr.merge(jsonPlaces)
 
