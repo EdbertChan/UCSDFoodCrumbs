@@ -54,6 +54,7 @@ class GetRestaurantListsController < ApplicationController
 
     #boxer has these as a json. We're going to convert these to an array of array of array of floats
     arrayOfBoxCoordinatesGoogleMax = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofGoogleMaxRouteBoxes)
+
 =begin
     #3. Algoirthm
 arrayOfBoxCoordinates = RouteBoxerHelper.get_route_boxes("foo", 5)
