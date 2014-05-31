@@ -9,4 +9,14 @@ application up and running.
 How to start on Digital Ocean:
 bundle exec rackup config.ru
 
+
+Keep running after ssh:
+screen bundle exec rackup config.ru
+
+Detach:
+Control + A + D
+
+Reattach 
+screen -r
+
 Api documentation:
