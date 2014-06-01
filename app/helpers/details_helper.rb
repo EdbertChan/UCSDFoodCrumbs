@@ -1,7 +1,18 @@
 module DetailsHelper
 
    def self.build_url(ref)
-       url =  "https://maps.googleapis.com/maps/api/place/details/json?reference=#{ref}" + "&sensor=false" + "&key=AIzaSyBdfbDfA6R0H0e3gDPXHNIW4cNJJAEjSss"
+    a = rand(4)
+        case a
+        when 0
+            api_key = 'AIzaSyARCJzx62dNJ2eYWbV8bu0c6sU8LSF73P0'
+        when 1
+            api_key = 'AIzaSyDcKmfg6IyjBMtSIREJEeYX1vRX1G_gUEc'
+        when 2
+            api_key = 'AIzaSyDtdYEXhy0vOMwoPEASOjp10R6DuUKjBv0'
+        when 3
+            api_key = 'AIzaSyCzGNpS3LtGLe3NVSfSm3IfqUi97DL_Rr4'
+        end
+       url =  "https://maps.googleapis.com/maps/api/place/details/json?reference=#{ref}" + "&sensor=false" + "&key=#{api_key}"
    end
 
 
