@@ -26,8 +26,8 @@ class GetRestaurantListsController < ApplicationController
 
     #check if it is valid
     jsonStr = {:routes => ActiveSupport::JSON.decode(mapsJSON)}
-
-
+    
+    
 
       if(GoogleMapsHelper.get_status(mapsJSON) !=  ENV["MAPS_VALID_CODE"])
     render json: jsonStr
