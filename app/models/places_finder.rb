@@ -62,7 +62,8 @@ end
 def self.placesQuery(queryList)
     # query Places.getPlaces
     placesList = JSON.parse(Places.findPlaces(queryList[0][0],queryList[0][1],queryList[0][2],queryList[0][3]))
-    placesList.delete("html_attributions")
+=begin
+ placesList.delete("html_attributions")
     placesList.delete("next_page_token")
     
     for i in 1..queryList.length-1
@@ -70,7 +71,7 @@ def self.placesQuery(queryList)
     end
 
     placesList["results"] = placesList["results"].uniq # remove duplicates
-
+=end
     return placesList
 end
 

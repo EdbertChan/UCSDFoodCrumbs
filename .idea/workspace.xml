@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d51bed2e-bbf9-4924-8457-9cf613f2a7d5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/google_maps.rb" afterPath="$PROJECT_DIR$/app/models/google_maps.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/google_maps_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/google_maps_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/places_finder.rb" afterPath="$PROJECT_DIR$/app/models/places_finder.rb" />
     </list>
     <ignored path="UCSDFoodCrumbs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="get_restaurant_lists_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
+      <file leaf-file-name="google_maps_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/google_maps_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="35" selection-start="664" selection-end="664" vertical-scroll-proportion="0.5208333" vertical-offset="135" max-vertical-offset="1905">
+            <state line="20" column="39" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0" vertical-offset="251" max-vertical-offset="840">
               <folding />
             </state>
           </provider>
@@ -65,10 +61,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="places_finder.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="places_finder.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/places_finder.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="18" selection-start="2675" selection-end="2675" vertical-scroll-proportion="0.0" vertical-offset="429" max-vertical-offset="1635">
+            <state line="67" column="4" selection-start="2625" selection-end="2625" vertical-scroll-proportion="0.609375" vertical-offset="654" max-vertical-offset="1650">
               <folding />
             </state>
           </provider>
@@ -141,17 +137,17 @@
         <option value="$PROJECT_DIR$/config/database.yml" />
         <option value="$PROJECT_DIR$/db/schema.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/models/places_finder.rb" />
         <option value="$PROJECT_DIR$/app/models/google_maps.rb" />
         <option value="$PROJECT_DIR$/app/helpers/google_maps_helper.rb" />
         <option value="$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb" />
         <option value="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/places_finder.rb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-127" />
-    <option name="y" value="51" />
+    <option name="x" value="122" />
+    <option name="y" value="22" />
     <option name="width" value="1280" />
     <option name="height" value="706" />
   </component>
@@ -264,6 +260,102 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UCSDFoodCrumbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UCSDFoodCrumbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UCSDFoodCrumbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UCSDFoodCrumbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UCSDFoodCrumbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UCSDFoodCrumbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeoTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UCSDFoodCrumbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UCSDFoodCrumbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -456,7 +548,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-127" y="51" width="1280" height="706" extended-state="0" />
+    <frame x="122" y="22" width="1280" height="706" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -496,13 +588,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="37" selection-start="1951" selection-end="1951" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1815">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/get_restaurant_list.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="36" selection-start="233" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="405" />
@@ -628,11 +713,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1110" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/php/src/GeoTools/RouteBoxer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="511" column="22" selection-start="17774" selection-end="17780" vertical-scroll-proportion="0.0" vertical-offset="7794" max-vertical-offset="8355" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/models/get_restaurant_list_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="6" selection-start="134" selection-end="134" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225" />
@@ -641,11 +721,6 @@
     <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="11" selection-start="237" selection-end="237" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/php/src/getBoxes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="43" selection-start="616" selection-end="616" vertical-scroll-proportion="0.5102041" vertical-offset="0" max-vertical-offset="588" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
@@ -692,20 +767,6 @@
     <entry file="file://$PROJECT_DIR$/app/helpers/route_boxer_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="62" column="37" selection-start="1701" selection-end="1701" vertical-scroll-proportion="0.8726655" vertical-offset="416" max-vertical-offset="1350">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/places.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/places_finder.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="18" selection-start="2675" selection-end="2675" vertical-scroll-proportion="0.0" vertical-offset="429" max-vertical-offset="1635">
           <folding />
         </state>
       </provider>
@@ -759,20 +820,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/google_maps.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1140">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/places_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="12" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="690">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/google_maps_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="308" column="27" selection-start="7110" selection-end="7110" vertical-scroll-proportion="0.5925297" vertical-offset="4271" max-vertical-offset="4860">
@@ -796,7 +843,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="35" selection-start="664" selection-end="664" vertical-scroll-proportion="0.5208333" vertical-offset="135" max-vertical-offset="1905">
+        <state line="38" column="0" selection-start="961" selection-end="961" vertical-scroll-proportion="0.7552083" vertical-offset="135" max-vertical-offset="1905">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/php/src/GeoTools/RouteBoxer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="540" column="47" selection-start="18605" selection-end="18605" vertical-scroll-proportion="0.8697917" vertical-offset="7599" max-vertical-offset="8355">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/php/src/getBoxes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="43" selection-start="616" selection-end="616" vertical-scroll-proportion="0.50933784" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/google_maps_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="39" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0" vertical-offset="251" max-vertical-offset="840">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/places_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="12" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="690">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/google_maps.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="0" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1140">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/places.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/places_finder.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="4" selection-start="2625" selection-end="2625" vertical-scroll-proportion="0.609375" vertical-offset="654" max-vertical-offset="1650">
           <folding />
         </state>
       </provider>
