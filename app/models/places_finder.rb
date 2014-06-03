@@ -90,8 +90,7 @@ def self.filterResults( userRouteBoxer, placesList )
           placesList_lat= placesList["results"][i]["geometry"]["location"]["lat"]
           placesList_long=placesList["results"][i]["geometry"]["location"]["lng"]
           #get the lat and long of the current place
-          puts(placesList_lat)
-          puts(placesList_long)
+        
           #if it is out of bounds
             if( placesList_lat <= userRouteBoxer[j][1][0] &&
                 placesList_lat >= userRouteBoxer[j][0][0] &&
@@ -102,7 +101,7 @@ def self.filterResults( userRouteBoxer, placesList )
             end
         end
         #if it is not in bounds
-        if inBounds != false
+        if inBounds == false
             placesList["results"].slice!(i)
         end
         	i = i + 1
