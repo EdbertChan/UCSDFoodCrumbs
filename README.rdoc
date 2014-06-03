@@ -20,3 +20,9 @@ Reattach
 screen -r
 
 Api documentation:
+
+How to set up:
+1) Install PHP 5.4+ on the server
+2) Run bundle update
+3) Migrate with rake:db migrate
+4) Run bundle exec rackup config.ru for server
