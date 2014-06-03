@@ -22,7 +22,7 @@ def self.get_valid_hash(mapsfromGoogleRoutes)
   return GoogleMapsHelper.get_direction(mapsfromGoogleRoutes)
 end
 
-  def self.get_direction(mapsfromGoogleRoutes)
-    return GoogleMap.get_direction(mapsfromGoogleRoutes)
+  def self.get_status_of_map(mapsfromGoogleRoutes)
+   return GoogleMaps.get_status(GetRestaurantListHelper.get_valid_hash(mapsfromGoogleRoutes))
   end
 end

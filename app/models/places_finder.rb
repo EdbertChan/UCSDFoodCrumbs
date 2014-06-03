@@ -78,7 +78,6 @@ end
 def self.filterResults( userRouteBoxer, placesList )
     # filter for all restaurants if they're inside the user defined routeboxer
 
-=begin
     i = 0
     while i  < placesList["results"].length
         duplicate = true
@@ -100,7 +99,6 @@ def self.filterResults( userRouteBoxer, placesList )
         	i = i + 1
         end
     end
-=end
     return JSON.generate(placesList)
 end
 

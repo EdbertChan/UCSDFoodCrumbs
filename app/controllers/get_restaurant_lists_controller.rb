@@ -25,19 +25,14 @@ class GetRestaurantListsController < ApplicationController
 
       mapsfromGoogleRoutes= GetRestaurantList.get_google_maps(params)
 
-    directionsFromGoogle =  GoogleMapsHelper.get_direction(mapsfromGoogleRoutes)
+      jsonStr = GetRestaurantList.generate_json_maps(mapsfromGoogleRoutes)
 
-    geostop = GoogleMapsHelper.get_geostop(mapsfromGoogleRoutes)
-
-    #convert map to JSON
-    jsonStr = {:routes => directionsFromGoogle, :geostop => geostop}
-
-    if(GoogleMapsHelper.get_status(GetRestaurantListHelper.get_valid_hash(mapsfromGoogleRoutes)) != ENV["MAPS_VALID_CODE"])
+    if(GetRestaurantList.get_status_of_map(mapsfromGoogleRoutes) != ENV["MAPS_VALID_CODE"])
       render json:jsonStr
       return
     end
 
-    arrayOfRouteLocations = GoogleMaps.get_route_points(GetRestaurantListHelper.get_valid_hash(mapsfromGoogleRoutes))
+    arrayOfRouteLocations = GetRestaurantList.get_array_points_for_boxer(mapsfromGoogleRoutes)
     #now we have a json array. we want to extract all the start_locations from them
     #extract the points along the route
 
@@ -47,7 +42,7 @@ class GetRestaurantListsController < ApplicationController
     # arg1 should be an array of coordinate. arg2 should be the radius
 defaultParameter = params[:radius]
     if(defined? params[:radius])
-      defaultParameter = 1
+      defaultParameter = 4
     end
     jsonArrayofUserDefinedRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, defaultParameter)
 
@@ -55,7 +50,7 @@ defaultParameter = params[:radius]
     arrayOfBoxCoordinatesUser = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofUserDefinedRouteBoxes)
 
     #get it as google max
-    jsonArrayofGoogleMaxRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations,50)
+    jsonArrayofGoogleMaxRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations,20)
 
     #boxer has these as a json. We're going to convert these to an array of array of array of floats
     arrayOfBoxCoordinatesGoogleMax = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofGoogleMaxRouteBoxes)
