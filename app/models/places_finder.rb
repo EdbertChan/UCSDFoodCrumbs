@@ -76,14 +76,19 @@ end
 
 def self.filterResults( userRouteBoxer, placesList )
     # filter output
+
+
     i = 0
     while i  < placesList["results"].length
         duplicate = true
         for j in 0..(userRouteBoxer.length-1)
-            if( placesList["results"][i]["geometry"]["location"]["lat"] <= userRouteBoxer[j][1][0] &&
-                placesList["results"][i]["geometry"]["location"]["lat"] >= userRouteBoxer[j][0][0] &&
-                placesList["results"][i]["geometry"]["location"]["lng"] <= userRouteBoxer[j][1][1] &&
-                placesList["results"][i]["geometry"]["location"]["lng"] >= userRouteBoxer[j][0][1] )
+
+          placesList_lat= placesList["results"][i]["geometry"]["location"]["lat"]
+          placesList_long=placesList["results"][i]["geometry"]["location"]["lng"]
+            if( placesList_lat <= userRouteBoxer[j][1][0] &&
+                placesList_lat >= userRouteBoxer[j][0][0] &&
+                placesList_long <= userRouteBoxer[j][1][1] &&
+                placesList_long >= userRouteBoxer[j][0][1] )
                 duplicate = false
                 break
             end

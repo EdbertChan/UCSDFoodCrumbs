@@ -30,11 +30,11 @@ class GetRestaurantListsController < ApplicationController
 
   #problem is hsere!!!
 
-    geoRoutePoints = GetRestaurantListHelper.get_route_points(mapsfromGoogleRoutes)
-    directions = GetRestaurantListHelper.get_geostop(mapsfromGoogleRoutes)
+    getRoutePoints = GetRestaurantListHelper.get_direction(mapsfromGoogleRoutes)
+    geostop = GetRestaurantListHelper.get_geostop(mapsfromGoogleRoutes)
 
     #convert map to JSON
-    jsonStr = {:routes => geoRoutePoints, :geostop => directions}
+    jsonStr = {:routes => geoRoutePoints, :geostop => geostop}
     
 
       if(GoogleMapsHelper.get_status(mapsfromGoogleRoutes) !=  ENV["MAPS_VALID_CODE"])
@@ -42,10 +42,11 @@ class GetRestaurantListsController < ApplicationController
      return
       end
 
+
     #now we have a json array. we want to extract all the start_locations from them
     #extract the points along the route
 
-   arrayOfRouteLocations = GetRestaurantListHelper.get_points_for_routeboxer(mapsfromGoogleRoutes)
+   arrayOfRouteLocations = GetRestaurantListHelper.get_points_for_routeboxer(coordinates)
 
 
     #2. Push the stuff to routeBoxer.
