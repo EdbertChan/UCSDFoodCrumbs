@@ -6,23 +6,15 @@ def self.get_google_maps(params)
 end
 
 # Returns the route boxes response
-  def self.get_route_boxes(routeBoxes)
-   json = " {
-    “boxes” :
-        [
-            {
-    “upper-left” : { “lat” : 32,  “lng” : 117 },
-        “bottom-right” : { “lat” : 32,  “lng” : 117 }
-    },
-        {
-    “upper-left” : { “lat” : 32,  “lng” : 117 },
-        “bottom-right” : { “lat” : 32,  “lng” : 117 }
-    }
-    ]
-    }"
-return JSON.parse(json)
-#return RouteBoxes.getBoxes(routeBoxes)
+
+  def self.get_route_points(mapsfromGoogleRoutes)
+    return GoogleMap.get_route_points(mapsfromGoogleRoutes)
   end
+
+  def self.get_geostop(mapsfromGoogleRoutes)
+    return GoogleMap.get_geostop(mapsfromGoogleRoutes)
+  end
+
 
   #Returns the restaurants response
   def self.get_restaurant_along_route(setOfPoints)
