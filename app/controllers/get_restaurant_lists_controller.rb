@@ -45,7 +45,7 @@ class GetRestaurantListsController < ApplicationController
 
 defaultParameter = 4
     if(params.has_key? (:radius))
-      defaultParameter = params[:radius]/1.6
+      defaultParameter = params[:radius].to_f/1.6
     end
     jsonArrayofUserDefinedRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, defaultParameter)
 
