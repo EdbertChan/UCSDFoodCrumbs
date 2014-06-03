@@ -305,7 +305,9 @@ module GoogleMapsHelper
   end
 
   def get_direction(jsonHash)
+
     return jsonHash[:routes]
+
   end
 
   def get_geostop(jsonHash)

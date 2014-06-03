@@ -22,37 +22,25 @@ class GetRestaurantListsController < ApplicationController
   def index
 
     #1. Get the JSON Hash
-    mapsfromGoogleRoutes = GetRestaurantList.get_google_maps(params)
 
-  #problem is hsere!!!
-=begin
-    getRoutePoints =  GoogleMapsHelper.get_direction(mapsfromGoogleRoutes)
+      mapsfromGoogleRoutes= GetRestaurantList.get_google_maps(params)
 
-    getRoutePoints =  GoogleMapsHelper.get_direction(mapsfromGoogleRoutes)
+    directionsFromGoogle =  GoogleMapsHelper.get_direction(mapsfromGoogleRoutes)
+
     geostop = GoogleMapsHelper.get_geostop(mapsfromGoogleRoutes)
 
     #convert map to JSON
-    jsonStr = {:routes => geoRoutePoints, :geostop => geostop}
-    
+    jsonStr = {:routes => directionsFromGoogle, :geostop => geostop}
 
-      if(GoogleMapsHelper.get_status(mapsfromGoogleRoutes) !=  ENV["MAPS_VALID_CODE"])
-    render json: jsonStr
-     return
-      end
-
-
-=end
-    jsonStr = GetRestaurantList.get_google_maps(params)
-    if(GoogleMapsHelper.get_status(GetRestaurantListHelper.get_valid_hash(jsonStr)) != ENV["MAPS_VALID_CODE"])
+    if(GoogleMapsHelper.get_status(GetRestaurantListHelper.get_valid_hash(mapsfromGoogleRoutes)) != ENV["MAPS_VALID_CODE"])
       render json:jsonStr
       return
     end
 
-    arrayOfRouteLocations = GoogleMaps.get_route_points(GoogleMapsHelper.get_valid_hash(jsonStr))
+    arrayOfRouteLocations = GoogleMaps.get_route_points(GetRestaurantListHelper.get_valid_hash(mapsfromGoogleRoutes))
     #now we have a json array. we want to extract all the start_locations from them
     #extract the points along the route
 
-   arrayOfRouteLocations = GetRestaurantListHelper.get_points_for_routeboxer(coordinates)
 
 
     #2. Push the stuff to routeBoxer.

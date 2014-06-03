@@ -46,6 +46,7 @@ class GoogleMaps < ActiveRecord::Base
  
     end
 
+
     return directions
 
     # NEW FUNCTIONALITY END
