@@ -40,9 +40,12 @@ class GetRestaurantListsController < ApplicationController
 
     #2. Push the stuff to routeBoxer.
     # arg1 should be an array of coordinate. arg2 should be the radius
-defaultParameter = params[:radius]
-    if(defined? params[:radius])
-      defaultParameter = 4
+
+      #convert the miles into kilometers
+
+defaultParameter = 4
+    if(params.has_key? (:radius))
+      defaultParameter = params[:radius]/1.6
     end
     jsonArrayofUserDefinedRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, defaultParameter)
 
@@ -60,7 +63,7 @@ defaultParameter = params[:radius]
 
 #need to parse
    #p arrayOfBoxCoordinatesUser;
-
+puts(arrayOfBoxCoordinatesUser)
 places = PlacesFinder.getPlaces(arrayOfBoxCoordinatesGoogleMax,arrayOfBoxCoordinatesUser,params[:term])
 
 

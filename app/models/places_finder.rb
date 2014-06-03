@@ -77,29 +77,37 @@ end
 
 def self.filterResults( userRouteBoxer, placesList )
     # filter for all restaurants if they're inside the user defined routeboxer
-
+#bottomleft upperright
     i = 0
+    #loop through the list of places
     while i  < placesList["results"].length
-        duplicate = true
+        #we assume it is not in bounds
+        inBounds = true
+
+        #itterate through the user defined boxes
         for j in 0..(userRouteBoxer.length-1)
 
           placesList_lat= placesList["results"][i]["geometry"]["location"]["lat"]
           placesList_long=placesList["results"][i]["geometry"]["location"]["lng"]
+          #get the lat and long of the current place
+          puts(placesList_lat)
+          puts(placesList_long)
+          #if it is out of bounds
             if( placesList_lat <= userRouteBoxer[j][1][0] &&
                 placesList_lat >= userRouteBoxer[j][0][0] &&
                 placesList_long <= userRouteBoxer[j][1][1] &&
                 placesList_long >= userRouteBoxer[j][0][1] )
-                duplicate = false
-                break
+              inBounds = false
+
             end
         end
-        if duplicate != false
+        #if it is not in bounds
+        if inBounds != false
             placesList["results"].slice!(i)
-        else
+        end
         	i = i + 1
         end
-    end
+
     return JSON.generate(placesList)
 end
-
-end
+  end
