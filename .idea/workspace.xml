@@ -64,7 +64,7 @@
       <file leaf-file-name="places_finder.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/places_finder.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="4" selection-start="2625" selection-end="2625" vertical-scroll-proportion="0.609375" vertical-offset="654" max-vertical-offset="1650">
+            <state line="80" column="0" selection-start="3045" selection-end="3045" vertical-scroll-proportion="0.16666667" vertical-offset="1104" max-vertical-offset="1695">
               <folding />
             </state>
           </provider>
@@ -892,7 +892,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/places_finder.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="4" selection-start="2625" selection-end="2625" vertical-scroll-proportion="0.609375" vertical-offset="654" max-vertical-offset="1650">
+        <state line="80" column="0" selection-start="3045" selection-end="3045" vertical-scroll-proportion="0.16666667" vertical-offset="1104" max-vertical-offset="1695">
           <folding />
         </state>
       </provider>
