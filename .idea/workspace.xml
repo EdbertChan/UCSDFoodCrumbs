@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d51bed2e-bbf9-4924-8457-9cf613f2a7d5" name="Default" comment="" />
+    <list default="true" id="d51bed2e-bbf9-4924-8457-9cf613f2a7d5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
+    </list>
     <ignored path="UCSDFoodCrumbs.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="get_restaurant_list_helper.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb">
+      <file leaf-file-name="get_restaurant_lists_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="1" selection-start="661" selection-end="773" vertical-scroll-proportion="0.61120546" vertical-offset="0" max-vertical-offset="589">
+            <state line="48" column="50" selection-start="1206" selection-end="1229" vertical-scroll-proportion="0.7385399" vertical-offset="285" max-vertical-offset="1995">
               <folding />
             </state>
           </provider>
@@ -137,8 +139,8 @@
         <option value="$PROJECT_DIR$/db/schema.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/models/places_finder.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
         <option value="$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
       </list>
     </option>
   </component>
@@ -837,13 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="44" selection-start="704" selection-end="727" vertical-scroll-proportion="0.8149406" vertical-offset="0" max-vertical-offset="1995">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/google_maps_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="306" column="19" selection-start="7058" selection-end="7071" vertical-scroll-proportion="0.5925297" vertical-offset="4241" max-vertical-offset="4830">
@@ -853,7 +848,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="1" selection-start="661" selection-end="773" vertical-scroll-proportion="0.61120546" vertical-offset="0" max-vertical-offset="589">
+        <state line="25" column="34" selection-start="717" selection-end="741" vertical-scroll-proportion="0.6366723" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="50" selection-start="1206" selection-end="1229" vertical-scroll-proportion="0.7385399" vertical-offset="285" max-vertical-offset="1995">
           <folding />
         </state>
       </provider>

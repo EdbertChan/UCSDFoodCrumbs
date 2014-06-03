@@ -30,8 +30,8 @@ class GetRestaurantListsController < ApplicationController
 
   #problem is hsere!!!
 
-    getRoutePoints = GetRestaurantListHelper.get_direction(mapsfromGoogleRoutes)
-    geostop = GetRestaurantListHelper.get_geostop(mapsfromGoogleRoutes)
+    getRoutePoints =  GoogleMapsHelper.get_direction(mapsfromGoogleRoutes)
+    geostop = GoogleMapsHelper.get_geostop(mapsfromGoogleRoutes)
 
     #convert map to JSON
     jsonStr = {:routes => geoRoutePoints, :geostop => geostop}
