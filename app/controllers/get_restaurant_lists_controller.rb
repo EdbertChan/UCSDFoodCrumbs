@@ -22,29 +22,34 @@ class GetRestaurantListsController < ApplicationController
   def index
 
     #1. Get the JSON Hash
-    mapsJSON = GetRestaurantList.get_google_maps(params)
 
-    #check if it is valid
-    jsonStr = {:routes => ActiveSupport::JSON.decode(mapsJSON)}
-    
-    
+      mapsfromGoogleRoutes= GetRestaurantList.get_google_maps(params)
 
-      if(GoogleMapsHelper.get_status(mapsJSON) !=  ENV["MAPS_VALID_CODE"])
-    render json: jsonStr
-     return
-      end
+    directionsFromGoogle =  GoogleMapsHelper.get_direction(mapsfromGoogleRoutes)
 
+    geostop = GoogleMapsHelper.get_geostop(mapsfromGoogleRoutes)
 
+    #convert map to JSON
+    jsonStr = {:routes => directionsFromGoogle, :geostop => geostop}
+
+    if(GoogleMapsHelper.get_status(GetRestaurantListHelper.get_valid_hash(mapsfromGoogleRoutes)) != ENV["MAPS_VALID_CODE"])
+      render json:jsonStr
+      return
+    end
+
+    arrayOfRouteLocations = GoogleMaps.get_route_points(GetRestaurantListHelper.get_valid_hash(mapsfromGoogleRoutes))
     #now we have a json array. we want to extract all the start_locations from them
     #extract the points along the route
 
-   arrayOfRouteLocations = GoogleMapsHelper.get_points(mapsJSON)
 
 
     #2. Push the stuff to routeBoxer.
     # arg1 should be an array of coordinate. arg2 should be the radius
-
-    jsonArrayofUserDefinedRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, params[:radius])
+defaultParameter = params[:radius]
+    if(defined? params[:radius])
+      defaultParameter = 1
+    end
+    jsonArrayofUserDefinedRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, defaultParameter)
 
     #boxer has these as a json. We're going to convert these to an array of array of array of floats
     arrayOfBoxCoordinatesUser = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofUserDefinedRouteBoxes)
@@ -55,15 +60,9 @@ class GetRestaurantListsController < ApplicationController
     #boxer has these as a json. We're going to convert these to an array of array of array of floats
     arrayOfBoxCoordinatesGoogleMax = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofGoogleMaxRouteBoxes)
 
-=begin
-    #3. Algoirthm
-arrayOfBoxCoordinates = RouteBoxerHelper.get_route_boxes("foo", 5)
-  for i in 0...boxesArray.size
-         placeResponse = GetRestaurantList.get_restaurant_along_route(arrayOfBoxCoordinates[i])
-       hashOfPlacesJsonResponse = GetRestaurantHelper.get_restaurant_json_hasher(hashOfPlacesJsonResponse, placeResponse)
-    end
 
-=end
+
+
 #need to parse
    #p arrayOfBoxCoordinatesUser;
 
@@ -73,7 +72,9 @@ places = PlacesFinder.getPlaces(arrayOfBoxCoordinatesGoogleMax,arrayOfBoxCoordin
     jsonPlaces = {:places => ActiveSupport::JSON.decode(places)}
     jsonStr = jsonStr.merge(jsonPlaces)
 
+
 render json:jsonStr
+
   end
 
 

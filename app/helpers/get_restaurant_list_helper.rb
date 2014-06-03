@@ -1,49 +1,28 @@
 module GetRestaurantListHelper
-
+include GoogleMapsHelper
   # Returns the full title on a per-page basis.
 def self.get_google_maps(params)
-  return GoogleMap.get_directions_json(params)
+  return GoogleMaps.get_directions_json(params)
 end
 
 # Returns the route boxes response
-  def self.get_route_boxes(routeBoxes)
-   json = " {
-    “boxes” :
-        [
-            {
-    “upper-left” : { “lat” : 32,  “lng” : 117 },
-        “bottom-right” : { “lat” : 32,  “lng” : 117 }
-    },
-        {
-    “upper-left” : { “lat” : 32,  “lng” : 117 },
-        “bottom-right” : { “lat” : 32,  “lng” : 117 }
-    }
-    ]
-    }"
-return JSON.parse(json)
-#return RouteBoxes.getBoxes(routeBoxes)
+
+  def self.get_route_points(mapsfromGoogleRoutes)
+    return GoogleMaps.get_route_points(mapsfromGoogleRoutes)
   end
 
-  #Returns the restaurants response
-  def self.get_restaurant_along_route(setOfPoints)
-
-
-        url = "https://maps.googleapis.com/maps/api/directions/json?origin=Pomona,CA&destination=Riverside,CA,92509&sensor=true&key=AIzaSyCS9C8uXjI5_qL5Z31gXj9Zsp5q1QuXpgM"
-    #key AIzaSyAAe8uFG4L8f_LYe-7etsNwdXraAUxIcPs
-
-    uri = URI(url)
-    http = Net::HTTP.new(uri.host, uri.port)
-
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    request = Net::HTTP::Get.new(uri.request_uri)
-
-    response = http.request(request)
-
-    return JSON.parse(response.body)
-
-    #return RestaurantsAlongRoute.getRestaurant(setOfPoints)
+  def self.get_geostop(mapsfromGoogleRoutes)
+    return GoogleMaps.get_geostop(mapsfromGoogleRoutes)
   end
 
+def self.get_valid_hash(mapsfromGoogleRoutes)
+  if(GoogleMapsHelper.get_geostop(mapsfromGoogleRoutes) != nil)
+    return GoogleMapsHelper.get_geostop(mapsfromGoogleRoutes)
+  end
+  return GoogleMapsHelper.get_direction(mapsfromGoogleRoutes)
+end
 
+  def self.get_direction(mapsfromGoogleRoutes)
+    return GoogleMap.get_direction(mapsfromGoogleRoutes)
+  end
 end
