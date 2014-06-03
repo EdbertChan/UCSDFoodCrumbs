@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="18258a93-d70e-401c-8604-2c64906f4032" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/get_restaurant_list.rb" afterPath="$PROJECT_DIR$/app/models/get_restaurant_list.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/get_restaurant_list_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/get_restaurant_lists_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/google_maps.rb" afterPath="$PROJECT_DIR$/app/models/google_maps.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/google_maps_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/google_maps_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/places_finder.rb" afterPath="$PROJECT_DIR$/app/models/places_finder.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="18258a93-d70e-401c-8604-2c64906f4032" name="Default" comment="" />
     <ignored path="UCSDFoodCrumbs.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -97,7 +89,7 @@
       <file leaf-file-name="places_finder.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/places_finder.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="21" selection-start="3635" selection-end="3635" vertical-scroll-proportion="0.5052083" vertical-offset="1089" max-vertical-offset="1665">
+            <state line="85" column="44" selection-start="3215" selection-end="3215" vertical-scroll-proportion="0.32291666" vertical-offset="1089" max-vertical-offset="1665">
               <folding />
             </state>
           </provider>
@@ -145,8 +137,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-47" />
-    <option name="y" value="28" />
+    <option name="x" value="151" />
+    <option name="y" value="29" />
     <option name="width" value="1280" />
     <option name="height" value="706" />
   </component>
@@ -391,7 +383,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-47" y="28" width="1280" height="706" extended-state="0" />
+    <frame x="151" y="29" width="1280" height="706" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -624,7 +616,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/places_finder.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="21" selection-start="3635" selection-end="3635" vertical-scroll-proportion="0.5052083" vertical-offset="1089" max-vertical-offset="1665">
+        <state line="85" column="44" selection-start="3215" selection-end="3215" vertical-scroll-proportion="0.32291666" vertical-offset="1089" max-vertical-offset="1665">
           <folding />
         </state>
       </provider>
