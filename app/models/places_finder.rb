@@ -75,9 +75,7 @@ def self.placesQuery(queryList)
 end
 
 def self.filterResults( userRouteBoxer, placesList )
-    # filter output
-
-
+    # filter for all restaurants if they're inside the user defined routeboxer
     i = 0
     while i  < placesList["results"].length
         duplicate = true

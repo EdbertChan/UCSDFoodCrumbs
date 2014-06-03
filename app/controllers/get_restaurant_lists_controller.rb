@@ -24,11 +24,9 @@ class GetRestaurantListsController < ApplicationController
     #1. Get the JSON Hash
     mapsfromGoogleRoutes = GetRestaurantList.get_google_maps(params)
 
-
-    #question: do I need to convert this into a json to pass in for get route points?
-    #check if it is valid
-
   #problem is hsere!!!
+=begin
+    getRoutePoints =  GoogleMapsHelper.get_direction(mapsfromGoogleRoutes)
 
     getRoutePoints =  GoogleMapsHelper.get_direction(mapsfromGoogleRoutes)
     geostop = GoogleMapsHelper.get_geostop(mapsfromGoogleRoutes)
@@ -43,6 +41,14 @@ class GetRestaurantListsController < ApplicationController
       end
 
 
+=end
+    jsonStr = GetRestaurantList.get_google_maps(params)
+    if(GoogleMapsHelper.get_status(GetRestaurantListHelper.get_valid_hash(jsonStr)) != ENV["MAPS_VALID_CODE"])
+      render json:jsonStr
+      return
+    end
+
+    arrayOfRouteLocations = GoogleMaps.get_route_points(GoogleMapsHelper.get_valid_hash(jsonStr))
     #now we have a json array. we want to extract all the start_locations from them
     #extract the points along the route
 

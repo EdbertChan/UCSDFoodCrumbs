@@ -18,7 +18,7 @@ class GoogleMaps < ActiveRecord::Base
     directions = {:routes => JSON.parse(jsonRoute)}
     #directions[:routes => jsonRoute]
     # HASH PROBLEM
-    if(get_json_status(JSON.parse(jsonRoute) ) == ENV["MAPS_VALID_CODE")
+    if(get_json_status(JSON.parse(jsonRoute) ) == ENV["MAPS_VALID_CODE"])
 
       # get keyCode determined by time/distance param
       keyCode = time_dist_check(params)

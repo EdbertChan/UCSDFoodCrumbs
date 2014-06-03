@@ -1,5 +1,5 @@
 module GetRestaurantListHelper
-
+include GoogleMapsHelper
   # Returns the full title on a per-page basis.
 def self.get_google_maps(params)
   return GoogleMap.get_directions_json(params)
@@ -15,11 +15,11 @@ end
     return GoogleMap.get_geostop(mapsfromGoogleRoutes)
   end
 
-def self.get_points_for_routeboxer(mapsfromGoogleRoutes)
-  if(GoogleMap.get_geostop(mapsfromGoogleRoutes) != nil)
-    return GoogleMap.get_geostop(mapsfromGoogleRoutes)
+def self.get_valid_hash(mapsfromGoogleRoutes)
+  if(GoogleMapsHelper.get_geostop(mapsfromGoogleRoutes) != nil)
+    return GoogleMapsHelper.get_geostop(mapsfromGoogleRoutes)
   end
-  return GoogleMap.get_direction(mapsfromGoogleRoutes)
+  return GoogleMapsHelper.get_direction(mapsfromGoogleRoutes)
 end
 
   def self.get_direction(mapsfromGoogleRoutes)
