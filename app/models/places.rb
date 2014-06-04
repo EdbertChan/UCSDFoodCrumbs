@@ -3,6 +3,7 @@ include PlacesHelper
 
     def self.findPlaces lat, long, radius, type = ""
         url = PlacesHelper.build_url(lat, long, radius, type)
+        puts(url)
         response = PlacesHelper.query_url(url)
     end
 

@@ -16,7 +16,7 @@ module PlacesHelper
         if type == ""
             url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}" + "&radius=#{radius}" + "&types=restaurant" + "&sensor=false&key=#{api_key}"
         else
-            url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}&radius=#{radius}&keyword=#{type}+food&sensor=false&key=#{api_key}"
+            url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}&radius=#{radius}&keyword=#{URI::encode(type)}+food&sensor=false&key=#{api_key}"
         end
         return url
     end
