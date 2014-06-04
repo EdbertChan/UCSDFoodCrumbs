@@ -64,12 +64,11 @@ defaultParameter = 4
 #need to parse
    #p arrayOfBoxCoordinatesUser;
 
-places = PlacesFinder.getPlaces(arrayOfBoxCoordinatesGoogleMax,arrayOfBoxCoordinatesUser,params[:places_filter])
+places = PlacesFinder.getPlaces(arrayOfBoxCoordinatesGoogleMax,arrayOfBoxCoordinatesUser,params)
 
 
     jsonPlaces = {:places => ActiveSupport::JSON.decode(places)}
     jsonStr = jsonStr.merge(jsonPlaces)
-
 
 render json:jsonStr
 

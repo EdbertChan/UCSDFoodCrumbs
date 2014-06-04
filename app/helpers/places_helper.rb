@@ -2,6 +2,7 @@ require 'json'
 module PlacesHelper
 
     def self.build_url(lat, long, radius, type )
+
         a = rand(4)
         case a
         when 0
@@ -13,7 +14,7 @@ module PlacesHelper
         when 3
             api_key = 'AIzaSyCzGNpS3LtGLe3NVSfSm3IfqUi97DL_Rr4'
         end
-        if type == ""
+        if type.to_s == ""
             url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}" + "&radius=#{radius}" + "&types=restaurant" + "&sensor=false&key=#{api_key}"
         else
             url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}&radius=#{radius}&keyword=#{URI::encode(type)}+food&sensor=false&key=#{api_key}"

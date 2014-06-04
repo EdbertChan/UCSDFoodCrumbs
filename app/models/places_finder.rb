@@ -1,7 +1,11 @@
 class PlacesFinder < ActiveRecord::Base
 
-def self.getPlaces(maxRouteBoxer,userRouteBoxer,searchString)
+def self.getPlaces(maxRouteBoxer,userRouteBoxer,params)
     #queryList = resizeBoxesToCircles(maxRouteBoxer,searchString) # setup query
+  searchString = ""
+  if(defined? params[:places_filter])
+searchString = params[:places_filter]
+  end
     placesResults = placesQuery(maxRouteBoxer, searchString)
    # placesList = filterResults(userRouteBoxer,placesResults)
     return placesResults
@@ -61,33 +65,30 @@ end
 
 
 def self.placesQuery(maxRouteBoxer, searchString)
-  # query Places.getPlaces
-placesList = Hash.new
-  #itterate through maxRouteBoxer
-  for i in 0..maxRouteBoxer.length-1
+  radius = 5000
+  midLat = (maxRouteBoxer[0][0][0]+maxRouteBoxer[0][1][0])/2
+  #longitude for search
+  midLong = (maxRouteBoxer[0][0][1]+maxRouteBoxer[0][1][1])/2
+
+
+  placesList =  JSON.parse(Places.findPlaces(midLat, midLong, radius, searchString))
+
+  placesList.delete("html_attributions")
+  placesList.delete("next_page_token")
+
+  for i in 1..maxRouteBoxer.length-1
     #latitude for search
     midLat = (maxRouteBoxer[i][0][0]+maxRouteBoxer[i][1][0])/2
     #longitude for search
     midLong = (maxRouteBoxer[i][0][1]+maxRouteBoxer[i][1][1])/2
 
-    radius = 5000
 
-    placesListTemp =  JSON.parse(Places.findPlaces(midLat, midLong, radius, searchString))
-
-    placesListTemp.delete("html_attributions")
-    placesListTemp.delete("next_page_token")
-
-if(!(placesList.empty?))
-    placesList["results"].concat(placesListTemp)
-else
-  placesList = placesListTemp
-
-end
-    placesList["results"] = placesList["results"].uniq # remove duplicates
-
+    placesListTemp = JSON.parse(Places.findPlaces(midLat, midLong, radius, searchString))
+    placesList["results"].concat (placesListTemp)["results"]
 
   end
 
+  placesList["results"] = placesList["results"].uniq # remove duplicates
   #  placesList["results"] = placesList["results"].uniq # remove duplicates
 
   return JSON.generate(placesList)
