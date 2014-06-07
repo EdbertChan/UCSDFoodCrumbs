@@ -7,7 +7,6 @@ require 'yaml'
 
 class GetRestaurantListsController < ApplicationController
   include GetRestaurantListHelper
-  include JsonHelper
   include GoogleMapsHelper
   helper_method :all
 
@@ -49,17 +48,16 @@ class GetRestaurantListsController < ApplicationController
     if (params.has_key? (:radius))
       defaultParameter = params[:radius].to_f/1.6
     end
-    jsonArrayofUserDefinedRouteBoxes = RouteBoxerHelper.get_route_boxes_json(arrayOfRouteLocations, defaultParameter)
-
+    arrayofUserDefinedRouteBoxes = RouteBoxerHelper.get_route_boxes_array(arrayOfRouteLocations, defaultParameter)
+    
     # begin algorithm part
 
     #get it as google max
-    jsonArrayofGoogleMaxRouteBoxes = RouteBoxerHelper.get_route_boxes_json(arrayOfRouteLocations, 20)
+    arrayofGoogleMaxRouteBoxes = RouteBoxerHelper.get_route_boxes_array(arrayOfRouteLocations, 20)
 
     #need to parse
-    routeLength = GooglePlacesHelper.getRouteLength(mapsfromGoogleRoutes)
 
-    places = PlacesFinder.getPlaces(arrayOfBoxCoordinatesGoogleMax, arrayOfBoxCoordinatesUser, params, routeLength)
+    places = PlacesFinder.getPlaces(arrayofGoogleMaxRouteBoxes, arrayofUserDefinedRouteBoxes, params)
 
 
     jsonPlaces = {:places => ActiveSupport::JSON.decode(places)}

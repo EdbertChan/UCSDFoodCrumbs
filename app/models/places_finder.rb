@@ -9,7 +9,7 @@ class PlacesFinder < ActiveRecord::Base
   # routeLength - a length of the entire trip
   #Return:	placesList - a JsonArray of all the places
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  def self.getPlaces(maxRouteBoxer, userRouteBoxer, params, routeLength)
+  def self.getPlaces(maxRouteBoxer, userRouteBoxer, params )
     #initialization
     searchString = ""
     if (defined? params[:places_filter])
@@ -22,7 +22,7 @@ class PlacesFinder < ActiveRecord::Base
       radius *= 1000
     end
 
-    placesResults = placesQueryAl(userRouteBoxer, searchString, radius)
+    placesResults = placesQuery(maxRouteBoxer, userRouteBoxer, searchString, radius)
     placesList = filterResults(userRouteBoxer, placesResults)
     return placesList
   end
@@ -38,8 +38,8 @@ class PlacesFinder < ActiveRecord::Base
   # radius - how far the user wants to deviate away from the route
   #Return:	Json.generate(placesList) - a Json representation of the places
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  def self.placesQuery(maxRouteBoxer, userBoxer, searchString, radius, routeLength)
-    placesList = Array.new
+  def self.placesQuery(maxRouteBoxer, userBoxer, searchString, radius)
+    placesList = Hash.new 
     for i in 0..maxRouteBoxer.length-1
       #latitude for search
       midLat = (maxRouteBoxer[i][0][0]+maxRouteBoxer[i][1][0])/2.0
@@ -48,19 +48,21 @@ class PlacesFinder < ActiveRecord::Base
 
       #determine whether we should use which box?
 
-      placesListTemp = JSON.parse(Places.findPlaces(midLat, midLong, radius, searchString))
+      placesListTemp = JSON.parse(Places.findPlaces(midLat, midLong, radius))
 
+        placesListTemp.delete("html_attributions")
 
-      if (placesList.any?)
+        placesListTemp.delete("next_page_token")
+      if ((placesList.empty?))
+
         placesList = placesListTemp
-        placesList.delete("html_attributions")
-        placesList.delete("next_page_token")
       else
-        placesList["results"].concat (placesListTemp)["results"]
+        placesList["results"].concat(placesListTemp)
       end
-    end
 
     placesList["results"] = placesList["results"].uniq # remove duplicates
+    end
+
 
     return JSON.generate(placesList)
   end
