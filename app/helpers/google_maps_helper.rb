@@ -480,4 +480,20 @@ module GoogleMapsHelper
     return jsonHash[:geoStop]
   end
 
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  #Name:	getRouteLength
+  #Description:	this helper method returns the distance travelled in a 
+  #		whole route.
+  #Params:	jsonRoute - the route json which will be used to extract
+  #			the total distance of the route.
+  #Return:	maxDist - a float which is the miles value of how long
+  #			the route is.
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  def getRouteLength(jsonRoute)
+    # retrieve the total distance of the trip 
+    maxDist = jsonRoute['routes'][0]['legs'][0]['distance']['text']
+    maxDist = mile_convert(maxDist)
+
+    return maxDist
+  end
 end
