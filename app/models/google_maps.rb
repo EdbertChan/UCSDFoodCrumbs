@@ -67,11 +67,4 @@ class GoogleMaps < ActiveRecord::Base
   end
 
 
-  def self.get_direction(jsonHash)
-    return GoogleMapsHelper.get_direction(jsonHash)
-  end
-
-  def self.get_geostop(jsonHash)
-    return GoogleMapsHelper.get_geostop(jsonHash)
-  end
 end

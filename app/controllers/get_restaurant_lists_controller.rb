@@ -62,8 +62,9 @@ defaultParameter = 4
 
 #need to parse
    #p arrayOfBoxCoordinatesUser;
+    routeLength = GooglePlacesHelper.getRouteLength(mapsfromGoogleRoutes)
 
-places = PlacesFinder.getPlaces(arrayOfBoxCoordinatesGoogleMax,arrayOfBoxCoordinatesUser,params)
+places = PlacesFinder.getPlaces(arrayOfBoxCoordinatesGoogleMax,arrayOfBoxCoordinatesUser,params, routeLength)
 
 
     jsonPlaces = {:places => ActiveSupport::JSON.decode(places)}

@@ -23,6 +23,9 @@ def self.get_valid_hash(mapsfromGoogleRoutes)
 end
 
   def self.get_status_of_map(mapsfromGoogleRoutes)
-   return GoogleMaps.get_status(GetRestaurantListHelper.get_valid_hash(mapsfromGoogleRoutes))
+   return GoogleMapsHelper.get_status(GetRestaurantListHelper.get_valid_hash(mapsfromGoogleRoutes))
+  end
+def self.get_route_length(mapsfromGoogleRoutes)
+  GooglePlacesHelper.getRouteLength( GetRestaurantListHelper.get_valid_hash(mapsfromGoogleRoutes) )
   end
 end

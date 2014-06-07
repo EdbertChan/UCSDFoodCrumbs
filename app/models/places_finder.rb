@@ -1,52 +1,52 @@
 class PlacesFinder < ActiveRecord::Base
 
-def self.getPlaces(maxRouteBoxer,userRouteBoxer,params)
+def self.getPlaces(maxRouteBoxer,userRouteBoxer,params,routeLength)
     #queryList = resizeBoxesToCircles(maxRouteBoxer,searchString) # setup query
   searchString = ""
   if(defined? params[:places_filter])
 searchString = params[:places_filter]
   end
 
-#modifiedGoogleMaxRouteBoxer = truncate(maxRouteBoxer, 3)
-    placesResults = placesQuery(userRouteBoxer, searchString)
- #   placesList = filterResults(userRouteBoxer,placesResults)
-    return placesResults
-end
-
-#this function will cut off the first & last fraction (eg first and last 1/3
-#of the routeBoxerArray)
-def self.truncate(routeBoxerArray, fraction)
-return routeBoxerArray.slice(1.0/fraction,(fraction-1.0)/fraction)
-end
-
-def self.placesQuery(maxRouteBoxer, searchString)
   radius = 5000
-  midLat = (maxRouteBoxer[0][0][0]+maxRouteBoxer[0][1][0])/2.0
-  #longitude for search
-  midLong = (maxRouteBoxer[0][0][1]+maxRouteBoxer[0][1][1])/2.0
+  if(params.has_key? (:radius))
+    radius = params[:radius].to_f/1.6
+    radius *= 1000
+  end
+
+    placesResults = placesQueryAl(userRouteBoxer, searchString, radius)
+    placesList = filterResults(userRouteBoxer,placesResults)
+    return placesList
+end
 
 
-  placesList =  JSON.parse(Places.findPlaces(midLat, midLong, radius, searchString))
 
-  placesList.delete("html_attributions")
-  placesList.delete("next_page_token")
-
-  for i in 1..maxRouteBoxer.length-1
+def self.placesQuery(maxRouteBoxer,userBoxer, searchString, radius, routeLength)
+  placesList = Array.new
+  for i in 0..maxRouteBoxer.length-1
     #latitude for search
     midLat = (maxRouteBoxer[i][0][0]+maxRouteBoxer[i][1][0])/2.0
     #longitude for search
     midLong = (maxRouteBoxer[i][0][1]+maxRouteBoxer[i][1][1])/2.0
 
+#determine whether we should use which box?
+    if(routeLength >= 8)
+      placesListTemp = JSON.parse(Places.getRadarSearch(midLat, midLong, radius, searchString))
+    else
+    placesListTemp = JSON.parse(Places.getPlacesSearch(midLat, midLong, radius, searchString))
+    end
 
-    placesListTemp = JSON.parse(Places.findPlaces(midLat, midLong, radius, searchString))
+    if(placesList.any?)
+      placesList = placesListTemp
+      placesList.delete("html_attributions")
+      placesList.delete("next_page_token")
+    else
     placesList["results"].concat (placesListTemp)["results"]
-
+    end
   end
 
   placesList["results"] = placesList["results"].uniq # remove duplicates
-  #  placesList["results"] = placesList["results"].uniq # remove duplicates
 
-  return JSON.generate(placesList)
+ return JSON.generate(placesList)
 end
 
 
