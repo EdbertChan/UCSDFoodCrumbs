@@ -18,14 +18,13 @@ class PlacesFinder < ActiveRecord::Base
 
     radius = 5000
     if (params.has_key? (:radius))
-      radius = params[:radius].to_f/1.6
+      radius = params[:radius].to_f*1.6
     end
 
-    placesResults = placesQuery(maxRouteBoxer, userRouteBoxer, searchString, radius)
+    placesResults = placesQuery(maxRouteBoxer, searchString, 5000)
 
-    puts(placesResults)
     placesList = filterResults(userRouteBoxer, placesResults)
-    return placesList
+    return JSON.generate(placesList)
   end
 
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -39,13 +38,15 @@ class PlacesFinder < ActiveRecord::Base
   # radius - how far the user wants to deviate away from the route
   #Return:	Json.generate(placesList) - a Json representation of the places
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  def self.placesQuery(maxRouteBoxer, userBoxer, searchString, radius)
-    placesList = Hash.new 
+  def self.placesQuery(maxRouteBoxer, searchString, radius)
+    placesList = Hash.new
     for i in 0..maxRouteBoxer.length-1
       #latitude for search
       midLat = (maxRouteBoxer[i][0][0]+maxRouteBoxer[i][1][0])/2.0
       #longitude for search
       midLong = (maxRouteBoxer[i][0][1]+maxRouteBoxer[i][1][1])/2.0
+
+
 
       #determine whether we should use which box?
 

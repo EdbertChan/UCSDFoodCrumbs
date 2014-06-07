@@ -46,16 +46,19 @@ class GetRestaurantListsController < ApplicationController
 
     defaultParameter = 4
     if (params.has_key? (:radius))
-      defaultParameter = params[:radius].to_f/1.6
+      defaultParameter = params[:radius].to_f*1.6
     end
-    arrayofUserDefinedRouteBoxes = RouteBoxerHelper.get_route_boxes_array(arrayOfRouteLocations, defaultParameter)
-    
-    # begin algorithm part
+    jsonArrayofUserDefinedRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, defaultParameter)
+
+    #boxer has these as a json. We're going to convert these to an array of array of array of floats
+    arrayofUserDefinedRouteBoxes = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofUserDefinedRouteBoxes)
 
     #get it as google max
-    arrayofGoogleMaxRouteBoxes = RouteBoxerHelper.get_route_boxes_array(arrayOfRouteLocations, 20)
+    jsonArrayofGoogleMaxRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations,10)
 
-    #need to parse
+    #boxer has these as a json. We're going to convert these to an array of array of array of floats
+    arrayofGoogleMaxRouteBoxes = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofGoogleMaxRouteBoxes)
+
 
     places = PlacesFinder.getPlaces(arrayofGoogleMaxRouteBoxes, arrayofUserDefinedRouteBoxes, params)
 

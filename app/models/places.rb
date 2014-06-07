@@ -30,7 +30,7 @@ class Places < ActiveRecord::Base
     # Call build url to create the URL that will attain our
     # restaurant results
     url = PlacesHelper.build_url(lat, long, radius, type, api_key)
-
+puts(url)
     # Get the json representation of the results from google
     # this json will contain up to 20 restaurants
     response = PlacesHelper.query_url(url)
