@@ -19,10 +19,11 @@ class PlacesFinder < ActiveRecord::Base
     radius = 5000
     if (params.has_key? (:radius))
       radius = params[:radius].to_f/1.6
-      radius *= 1000
     end
 
     placesResults = placesQuery(maxRouteBoxer, userRouteBoxer, searchString, radius)
+
+    puts(placesResults)
     placesList = filterResults(userRouteBoxer, placesResults)
     return placesList
   end
@@ -53,18 +54,19 @@ class PlacesFinder < ActiveRecord::Base
         placesListTemp.delete("html_attributions")
 
         placesListTemp.delete("next_page_token")
+
       if ((placesList.empty?))
 
         placesList = placesListTemp
       else
-        placesList["results"].concat(placesListTemp)
+        placesList["results"].concat(placesListTemp["results"])
       end
 
     placesList["results"] = placesList["results"].uniq # remove duplicates
     end
 
 
-    return JSON.generate(placesList)
+    return placesList
   end
 
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

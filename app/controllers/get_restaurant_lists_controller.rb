@@ -63,7 +63,7 @@ class GetRestaurantListsController < ApplicationController
     jsonPlaces = {:places => ActiveSupport::JSON.decode(places)}
     jsonStr = jsonStr.merge(jsonPlaces)
 
-    render json :jsonStr
+    render json:jsonStr
 
   end
 
