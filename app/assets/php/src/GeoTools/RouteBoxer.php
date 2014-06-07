@@ -216,21 +216,35 @@ class RouteBoxer
 
 		if ($latlng->getLongitude() > $hintlatlng->getLongitude()) {
 			for ($x = $hint[0]; $this->lngGrid[$x + 1] < $latlng->getLongitude(); $x++) {
-
+if($x+1 > count($this->lngGrid)){
+$x++;
+break;
+}
 			}
 		} else {
 			for ($x = $hint[0]; $this->lngGrid[$x] > $latlng->getLongitude(); $x--) {
-
+if($x-1 < 0){
+$x--;
+break;
+}
 			}
-		}
+			}
+		
 
 		if ($latlng->getLatitude() > $hintlatlng->getLatitude()) {
 			for ($y = $hint[1]; $this->latGrid[$y + 1] < $latlng->getLatitude(); $y++) {
 
+if($y+1 > count($this->lngGrid)){
+$y++;
+break;
+}
 			}
 		} else {
 			for ($y = $hint[1]; $this->latGrid[$y] > $latlng->getLatitude(); $y--) {
-
+if($y-1 < 0){
+$y--;
+break;
+}
 			}
 		}
 

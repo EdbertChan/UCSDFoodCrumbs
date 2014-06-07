@@ -37,7 +37,6 @@ class GetRestaurantListsController < ApplicationController
     #extract the points along the route
 
 
-
     #2. Push the stuff to routeBoxer.
     # arg1 should be an array of coordinate. arg2 should be the radius
 
@@ -51,13 +50,13 @@ defaultParameter = 4
 
     #boxer has these as a json. We're going to convert these to an array of array of array of floats
     arrayOfBoxCoordinatesUser = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofUserDefinedRouteBoxes)
-
+   # begin algorithm part
+ 
     #get it as google max
     jsonArrayofGoogleMaxRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations,20)
 
     #boxer has these as a json. We're going to convert these to an array of array of array of floats
     arrayOfBoxCoordinatesGoogleMax = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofGoogleMaxRouteBoxes)
-
 
 
 
