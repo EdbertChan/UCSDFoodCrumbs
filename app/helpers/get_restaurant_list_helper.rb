@@ -14,7 +14,18 @@ end
   def self.get_geostop(mapsfromGoogleRoutes)
     return GoogleMaps.get_geostop(mapsfromGoogleRoutes)
   end
-
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#Name:	get_valid_hash
+#Description: This function will determine which point(s) to use on a
+# route for directions and routeboxer based on whether the user
+# specified a distance or not and whether we have a valid location
+# or not.
+#Params:	mapsfromGoogleRoutes - The return value of the GoogleRoutes
+# class
+#Return:	the directions of what we're interested in, whether that is the
+# geolocation of x time/distance into the route or the directions along
+# the route
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 def self.get_valid_hash(mapsfromGoogleRoutes)
   if(GoogleMapsHelper.get_geostop(mapsfromGoogleRoutes) != nil)
     return GoogleMapsHelper.get_geostop(mapsfromGoogleRoutes)

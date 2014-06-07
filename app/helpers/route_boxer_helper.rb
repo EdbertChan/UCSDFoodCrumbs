@@ -2,7 +2,15 @@ require 'php'
 require 'json'
 module RouteBoxerHelper
 
-  # Returns the full title on a per-page basis.
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  #Name:	get_route_boxes
+  #Description: This function will execute the getBoxes script that is
+  # written in php.
+  #Params:	arrayOfRouteLocations - an array of array of geolocation points
+  # arranged in latitude and longitude of a google route
+  # radius - a float of how far away the user wants to deviate
+  #Return:	arrayOfBoxesJSON - a json array of routeboxer points
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   def self.get_route_boxes(arrayOfRouteLocations, radius)
     #check to make sure array of Boxes is ok
 
@@ -23,10 +31,16 @@ arrayOfRouteLocationsJSON = arrayOfRouteLocations.to_json
 
     end
 
-    def self.numeric?(object)
-      true if Float(object) rescue false
-    end
 
+
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  #Name:	convert_route_boxes_json_to_array
+  #Description: This function will convert the output of get_route_bxes
+  # into a json representation
+  #Params:	jsonArrayRouteBoxesRawString - an array of array of routeboxer
+  # locations.
+  #Return:	arrayOfBoxCoordinates - a json representation of routeboxer points
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 def self.convert_route_boxes_json_to_array(jsonArrayRouteBoxesRawString)
 #check to see if this is a google maps valid json
 #1) Check if the string is formated ok as a JSON
@@ -66,19 +80,23 @@ def self.convert_route_boxes_json_to_array(jsonArrayRouteBoxesRawString)
     return arrayOfBoxCoordinates
 
   end
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  #Name:	get_route_boxes_json
+  #Description: This function will execute the getBoxes script that is
+  # written in php and return the json representation
+  #Params:	arrayOfRouteLocations - an array of array of geolocation points
+  # arranged in latitude and longitude of a google route
+  # radius - a float of how far away the user wants to deviate
+  #Return:	arrayOfBoxCoordinatesUser - a json representation of routeboxer points
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  def self.get_route_boxes_json(arrayOfRouteLocations, radius)
+    jsonArrayofUserDefinedRouteBoxes = RouteBoxerHelper.get_route_boxes(arrayOfRouteLocations, radius)
 
-  def self.get_routes(googleMapsJson)
-    #check if it is a json
+    #boxer has these as a json. We're going to convert these to an array of array of array of floats
+    arrayOfBoxCoordinatesUser = RouteBoxerHelper.convert_route_boxes_json_to_array(jsonArrayofUserDefinedRouteBoxes)
 
-    #extract if it is relevant
-    routes = JSON.parse(googleMapsJson)['boxes']
-
-    #return. Must note what happens on failure.
-    return routes
-
+    return arrayOfBoxCoordinatesUser
   end
-private
-    def self.checkValidInputs(arrayOfRouteLocations, radius)
-      render json: { errors: @model.errors }
-    end
+
+
 end
