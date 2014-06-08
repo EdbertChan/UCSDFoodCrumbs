@@ -9,8 +9,8 @@ searchString = params[:places_filter]
 
 #modifiedGoogleMaxRouteBoxer = truncate(maxRouteBoxer, 3)
     placesResults = placesQuery(userRouteBoxer, searchString)
-  placesList = filterResults(userRouteBoxer,placesResults)
-    return placesList
+  placesResults= filterResults(userRouteBoxer,placesResults)
+    return JSON.generate(placesResults) 
 end
 
 #this function will cut off the first & last fraction (eg first and last 1/3
@@ -53,12 +53,13 @@ end
 def self.filterResults( userRouteBoxer, placesList )
     # filter for all restaurants if they're inside the user defined routeboxer
 #bottomleft upperright
+placesListNew = Array.new
 
     i = 0
     #loop through the list of places
     while i < placesList["results"].length
         #we assume it is not in bounds
-        inBounds = true
+        inBounds = false 
 
         #itterate through the user defined boxes
         for j in 0..(userRouteBoxer.length-1)
@@ -66,25 +67,39 @@ def self.filterResults( userRouteBoxer, placesList )
           placesList_lat= placesList["results"][i]["geometry"]["location"]["lat"]
           placesList_long=placesList["results"][i]["geometry"]["location"]["lng"]
           #get the lat and long of the current place
+          #if it is in  bounds
+routeBoxerTopRightLat = userRouteBoxer[j][1][0]
+routeBoxerTopRightLong = userRouteBoxer[j][1][1]
+routeBoxerBotLeftLat = userRouteBoxer[j][0][0]
+routeBoxerBotLeftLong = userRouteBoxer[j][0][1]
 
-          #if it is out of bounds
-            if( placesList_lat < userRouteBoxer[j][1][0] &&
-                placesList_lat > userRouteBoxer[j][0][0] &&
-                placesList_long < userRouteBoxer[j][1][1] &&
-                placesList_long > userRouteBoxer[j][0][1] )
-              inBounds = false
+puts("bottomLeft:")
+puts(userRouteBoxer[j][1][0])
+puts(userRouteBoxer[j][1][1])
+puts("topRight\n")
+puts(userRouteBoxer[j][0][0])
+puts(userRouteBoxer[j][0][1])
+puts("placesList\n")
+puts(placesList_lat)
+puts(placesList_long)
+            if( placesList_lat > routeBoxerBotLeftLat &&
+                placesList_lat <  routeBoxerTopRightLat &&
+                placesList_long > routeBoxerBotLeftLong &&
+                placesList_long < routeBoxerTopRightLong)
+              inBounds = true
               break
             end
         end
         #if it is not in bounds
-        if inBounds == false
-
-            placesList["results"].slice!(i)
+        if inBounds == true 
+            placesListNew.push(placesList["results"][i])
         end
          i = i + 1
     end
 
+placesList.store("results",placesListNew)
 
-    return JSON.generate(placesList)
+    return placesList
+
 end
   end

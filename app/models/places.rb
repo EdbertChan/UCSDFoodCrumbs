@@ -14,17 +14,17 @@ class Places < ActiveRecord::Base
     a = rand(6)
     case a
       when 0
-        api_key = 'AIzaSyARCJzx62dNJ2eYWbV8bu0c6sU8LSF73P0'
+        api_key = 'AIzaSyAAe8uFG4L8f_LYe-7etsNwdXraAUxIcPs'
       when 1
-        api_key = 'AIzaSyDcKmfg6IyjBMtSIREJEeYX1vRX1G_gUEc'
+        api_key = 'AIzaSyAAe8uFG4L8f_LYe-7etsNwdXraAUxIcPs'
       when 2
-        api_key = 'AIzaSyDtdYEXhy0vOMwoPEASOjp10R6DuUKjBv0'
+        api_key = 'AIzaSyAAe8uFG4L8f_LYe-7etsNwdXraAUxIcPs'
       when 3
-        api_key = 'AIzaSyCzGNpS3LtGLe3NVSfSm3IfqUi97DL_Rr4'
+        api_key = 'AIzaSyAAe8uFG4L8f_LYe-7etsNwdXraAUxIcPs'
       when 4
-        api_key = 'AIzaSyBdfbDfA6R0H0e3gDPXHNIW4cNJJAEjSss'
+        api_key = 'AIzaSyAAe8uFG4L8f_LYe-7etsNwdXraAUxIcPs'
       when 5
-        api_key = 'AIzaSyBt5zF6zrR4CWt8fL18BtxQ3yuJXF8A4yU'
+        api_key = 'AIzaSyAAe8uFG4L8f_LYe-7etsNwdXraAUxIcPs'
     end
 
     # Call build url to create the URL that will attain our
