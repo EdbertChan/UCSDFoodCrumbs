@@ -12,7 +12,6 @@ module GoogleMapsHelper
   #			maps.
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   def get_url(parama)
-
     # set our params to variables, this makes sure we have variables set
     # incase the app sent in empty string params
     origin = parama[:origin]
@@ -40,7 +39,7 @@ module GoogleMapsHelper
     # constructs the string using our origin, dest, & API key
     url = "https://maps.googleapis.com/maps/api/directions/" +
           "json?sensor=false&origin=" + origin +
-          "&destination=" + destination + "&key="+ENV["GOOGLE_API_KEY"]
+          "&destination=" + destination + "&key="+"AIzaSyCS9C8uXjI5_qL5Z31gXj9Zsp5q1QuXpgM"
 
     # substitute the spaces in our string with underscores
     url = url.gsub(' ','_')
@@ -60,7 +59,6 @@ module GoogleMapsHelper
   #			json returned from our HTTP request.
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   def get_json(url_param)
-
     # get the uri from using a URI method that will be used to get a new
     # HTTP request
     uri = URI(url_param)
@@ -103,8 +101,8 @@ module GoogleMapsHelper
     status = jsonRoute["status"]
 
     # determine what ERROR code to return depending on the status
-    if(status == ENV["MAPS_VALID"])
-      return ENV["MAPS_VALID_CODE"]
+    if(status == "OK")
+      return 100
     end
     if( status== "NOT_FOUND")
       return 101
@@ -229,10 +227,10 @@ module GoogleMapsHelper
       else
         hour = array[0].to_f
         min = array[2].to_f
-
+      end
     # 3 fields, we know where there is a Day/Hour/Min and can
     # easily assign indices of the array to our variables 
-      end
+    else
       day = array[0].to_f
       hour = array[2].to_f
       min = array[4].to_f
@@ -320,14 +318,46 @@ module GoogleMapsHelper
       steps.each do |step|
         
         stepTime = step['duration']['text']
-        timeCount = timeCount + time_convert(stepTime)
+        puts(stepTime)
+        stepTime = time_convert(stepTime)
+
+        puts("stepTime is #{stepTime} ")
+        timeCount = timeCount + stepTime
 
         lat = step["end_location"]["lat"]
         lng = step["end_location"]["lng"]
         
         # we break once our timeCount exceeds our time param
-        break if timeCount > time
+  
+	if(timeCount > time)
+            
+            #This block of code gets the steps, starting and ending
+            # coordinates, then it calculates the ratio between 
+	    # 1) the (miles/time) needed to travel to satisfy the required
+	    # (miles/time) specified by the user &
+	    # 2) the (miles/time) of the entire step. Once we have this
+	    # ratio, we can find the lat/lng difference, multiply the 
+  	    # difference by our lat and lng difference and then add that
+ 	    # result back to our start lat/lng to get our desire point. 
+            timeCount = timeCount - stepTime
+            timeGoal = time - timeCount
 
+            startLat = step['start_location']["lat"]
+            startLng = step['start_location']["lng"]
+
+	    latDiff = lat - startLat
+            lngDiff = lng - startLng
+
+            timeRatio = timeGoal/stepTime
+ 
+            latDiff = latDiff*timeRatio
+            lngDiff = lngDiff*timeRatio
+            
+            lat = startLat + latDiff
+            lng = startLng + lngDiff
+
+            break
+        end
       end
       # now we assign origin to be the latest lat,lng points
       origin = "#{lat},#{lng}"
@@ -394,15 +424,47 @@ module GoogleMapsHelper
       steps.each do |step|
         
         stepDist = step['distance']['text']
-        milesCount = milesCount + mile_convert(stepDist)
+        stepDist = mile_convert(stepDist)
+
+        milesCount = milesCount + stepDist
 
         lat = step["end_location"]["lat"]
         lng = step["end_location"]["lng"]
         
-        break if milesCount > distance
+        # we break once our milesCount exceeds our time param
 
+        if(milesCount > distance)
+
+	    # This block of code gets the steps, starting and ending
+            # coordinates, then it calculates the ratio between 
+	    # 1) the (miles/time) needed to travel to satisfy the required
+	    # (miles/time) specified by the user &
+	    # 2) the (miles/time) of the entire step. Once we have this
+	    # ratio, we can find the lat/lng difference, multiply the 
+  	    # difference by our lat and lng difference and then add that
+ 	    # result back to our start lat/lng to get our desire point. 
+	    milesCount = milesCount - stepDist
+	    mileGoal = distance - milesCount
+            
+	    startLat = step['start_location']["lat"]
+            startLng = step['start_location']["lng"]
+            
+            latDiff = lat - startLat
+            lngDiff = lng - startLng
+            
+            mileRatio = mileGoal/stepDist
+             
+            latDiff = latDiff*mileRatio
+            lngDiff = lngDiff*mileRatio
+            
+            lat = startLat + latDiff
+            lng = startLng + lngDiff
+
+            break
+         end
       end
       
+      # now we assign origin to be the latest lat,lng points
       origin = "#{lat},#{lng}"
       
     end
@@ -419,7 +481,6 @@ module GoogleMapsHelper
     return json
 
   end
- 
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   #Name:	time_dist_check
   #Description: This method checks to see if our time or distance params

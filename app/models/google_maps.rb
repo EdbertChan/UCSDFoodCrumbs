@@ -32,7 +32,7 @@ class GoogleMaps < ActiveRecord::Base
     
     # check the first json to see if the status was ok or not. If it is,
     # we do further checking on our parameters
-    if(get_json_status(JSON.parse(jsonRoute) ) == ENV["MAPS_VALID_CODE"])
+    if(get_json_status(JSON.parse(jsonRoute) ) == 100)
 
       # get keyCode determined by time/distance param
       keyCode = time_dist_check(params)
