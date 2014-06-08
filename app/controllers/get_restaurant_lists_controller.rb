@@ -30,9 +30,8 @@ class GetRestaurantListsController < ApplicationController
     mapsfromGoogleRoutes= GetRestaurantList.get_google_maps(params)
 
     jsonStr = GetRestaurantList.generate_json_maps(mapsfromGoogleRoutes)
-
     if (GetRestaurantList.get_status_of_map(mapsfromGoogleRoutes) != ENV["MAPS_VALID_CODE"])
-      render json :jsonStr
+      render json:jsonStr
       return
     end
 
