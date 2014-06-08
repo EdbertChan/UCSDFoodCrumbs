@@ -73,15 +73,6 @@ routeBoxerTopRightLong = userRouteBoxer[j][1][1]
 routeBoxerBotLeftLat = userRouteBoxer[j][0][0]
 routeBoxerBotLeftLong = userRouteBoxer[j][0][1]
 
-puts("bottomLeft:")
-puts(userRouteBoxer[j][1][0])
-puts(userRouteBoxer[j][1][1])
-puts("topRight\n")
-puts(userRouteBoxer[j][0][0])
-puts(userRouteBoxer[j][0][1])
-puts("placesList\n")
-puts(placesList_lat)
-puts(placesList_long)
             if( placesList_lat > routeBoxerBotLeftLat &&
                 placesList_lat <  routeBoxerTopRightLat &&
                 placesList_long > routeBoxerBotLeftLong &&
